@@ -1,0 +1,32 @@
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+    <Fragment>
+        <DirectoryRef Id="NAS_Tool">
+            <Component Id="cmpBF6iRGBbdEqk6iKly_UGhhDzIAw" Guid="8CDB7471-72AE-4AE5-B16C-3DF08B69CD0E">
+                <File Id="filCu0XFo8AmJFk.vM7LVWs0A5ockc" KeyPath="yes" Source="$(var.NAS_ToolDir)\ainas-delegator.exe" />
+            </Component>
+            <Component Id="cmp16zZ9Tmxef_BF0zauuwWndCT0gw" Guid="56DA1D88-3AA0-4C91-8783-7F79579CC038">
+                <File Id="filtEdIfUQE7hdtT9KZRnh2mH3fXGM" KeyPath="yes" Source="$(var.NAS_ToolDir)\ainas-delegator.exe.config" />
+            </Component>
+            <Component Id="cmp7liOqRUjI5u6nnIQzRlUIdZ8WWA" Guid="09196A5E-15F8-44CB-B769-7A45264A9B82">
+                <File Id="fil5RYea3bKmLSAgn.16o6wNEDfjnI" KeyPath="yes" Source="$(var.NAS_ToolDir)\License.txt" />
+            </Component>
+            <Component Id="cmpuoDugQsUjeGfImnLiRY01whSws0" Guid="0F862987-402C-4439-8D81-B951543C8AB3">
+                <File Id="filg8wbrghwKaeP7nIs7XBLOhZasRU" KeyPath="yes" Source="$(var.NAS_ToolDir)\Newtonsoft.Json.dll" />
+            </Component>
+            <Directory Id="dirMErVi.YlSaQOuMzdhnF3xndOpVI" Name="ja-JP">
+                <Component Id="cmpTe8v0eCFhKjJS7P3LWuFrVHabHg" Guid="A7423B14-B858-42CF-AF22-DD23C9EB95DB">
+                    <File Id="filArmQXLIatvNKQVK7HZHjFSj0hH4" KeyPath="yes" Source="$(var.NAS_ToolDir)\ja-JP\ainas-delegator.resources.dll" />
+                </Component>
+            </Directory>
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <ComponentGroup Id="NAS_ToolGroup">
+            <ComponentRef Id="cmpBF6iRGBbdEqk6iKly_UGhhDzIAw" />
+            <ComponentRef Id="cmp16zZ9Tmxef_BF0zauuwWndCT0gw" />
+            <ComponentRef Id="cmp7liOqRUjI5u6nnIQzRlUIdZ8WWA" />
+            <ComponentRef Id="cmpuoDugQsUjeGfImnLiRY01whSws0" />
+            <ComponentRef Id="cmpTe8v0eCFhKjJS7P3LWuFrVHabHg" />
+        </ComponentGroup>
+    </Fragment>
+</Wix>

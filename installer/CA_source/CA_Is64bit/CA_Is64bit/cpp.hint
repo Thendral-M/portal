@@ -1,0 +1,2 @@
+#define CAIS64BIT_API __declspec(dllexport)
+#define CAIS64BIT_API __declspec(dllimport)

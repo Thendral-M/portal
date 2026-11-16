@@ -1,0 +1,2 @@
+#define CACHECKBROWSER_API __declspec(dllexport)
+#define CACHECKBROWSER_API __declspec(dllimport)

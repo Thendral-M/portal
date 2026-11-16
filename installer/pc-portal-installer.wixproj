@@ -1,0 +1,35 @@
+<Project Sdk="WixToolset.Sdk/6.0.2">
+  <PropertyGroup>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OutputName>cocoro-office</OutputName>
+    <OutputType>Package</OutputType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DefineConstants>Debug</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DefineConstants>PortalDir=InstallModules\cocoro-office-win32-ia32;NAS_ToolDir=InstallModules\NAS_Tool;PC_AgentDir=InstallModules\PC_Agent;TSVerificationDir=InstallModules\TSVerification</DefineConstants>
+    <SuppressAllWarnings>True</SuppressAllWarnings>
+    <Pedantic>False</Pedantic>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="cocoro-office.wxs" />
+    <Compile Include="CustomInstallDirDlg.wxs" />
+    <Compile Include="CustomLicenseAgreementDlg.wxs" />
+    <Compile Include="CustomUI_InstallDir.wxs" />
+    <Compile Include="HyperlinkWelcomeEulaDlg.wxs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="WixUI_Alt_ja-jp.wxl" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="WixToolset.UI.wixext" Version="6.0.2" />
+    <PackageReference Include="WixToolset.Util.wixext" Version="6.0.2" />
+    <PackageReference Include="WixToolset.VisualStudio.wixext" Version="6.0.2" />
+    <PackageReference Include="WixToolset.Bal.wixext" Version="6.0.2" />
+    <PackageReference Include="WixToolset.Netfx.wixext" Version="6.0.2" />
+  </ItemGroup>
+</Project>

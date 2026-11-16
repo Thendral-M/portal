@@ -1,0 +1,21 @@
+<Project Sdk="WixToolset.Sdk/6.0.2">
+  <PropertyGroup>
+    <OutputType>Bundle</OutputType>
+    <OutputName>cocoro-office_installer</OutputName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+    <VerboseOutput>true</VerboseOutput>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="bundleresources\ARPPRODUCTICON.ico" />
+    <Content Include="bundleresources\cocorooffice256x256.bmp" />
+    <Content Include="bundleresources\cocorooffice256x256.png" />
+    <Content Include="bundleresources\cocorooffice32x32.bmp" />
+    <Content Include="bundleresources\cocorooffice32x32.png" />
+    <Content Include="config.wxi" />
+    <Content Include="HyperlinkLargeTheme.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="WixToolset.BootstrapperApplications.wixext" Version="6.0.2" />
+  </ItemGroup>
+</Project>

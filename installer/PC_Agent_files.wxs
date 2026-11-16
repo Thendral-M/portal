@@ -1,0 +1,74 @@
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+    <Fragment>
+        <DirectoryRef Id="PC_Agent">
+            <Component Id="cmpdHz6T7HFG4CIu0NPF01xTfxD9sY" Guid="6DF65903-A05D-4C9C-8EF4-37EB4394F0AF">
+                <File Id="filf92UN4SdiLw8ShmWDqcaep2ufKQ" KeyPath="yes" Source="$(var.PC_AgentDir)\APIConnector.dll" />
+            </Component>
+            <Component Id="cmpn0nKylzKwJimbrLCz8eW1iTlIjQ" Guid="C79D673B-0CA1-4C94-AC3F-A7934F23135D">
+                <File Id="filVzvg.wdJq8xNn_x.kcw2B8ks6RM" KeyPath="yes" Source="$(var.PC_AgentDir)\APIConnector.dll.config" />
+            </Component>
+            <Component Id="cmp8XPxNxTdYnVQIASeFcgUlSJIoBo" Guid="A9BD5FA7-F81C-439B-98E4-BCEF2F4D6A09">
+                <File Id="filoY5yb4piyrBaPBtPPN0shreQYko" KeyPath="yes" Source="$(var.PC_AgentDir)\DisplayInfo.exe" />
+            </Component>
+            <Component Id="cmpTis97S9V3QQJobxCSFkT0nHhzSU" Guid="E8BE25FD-32ED-446A-A49A-68B883A7A64B">
+                <File Id="filAKulDkWjxYU0wNXpspPBVHcS0aQ" KeyPath="yes" Source="$(var.PC_AgentDir)\License.txt" />
+            </Component>
+            <Component Id="cmpr7d8ot7CLGcQUtQpCmBp5Yucpfg" Guid="96A9D685-63F3-46E9-AA57-3A84CED09802">
+                <File Id="filOCfkQVJ67SRT_KpMzlfWl8kmflg" KeyPath="yes" Source="$(var.PC_AgentDir)\Newtonsoft.Json.dll" />
+            </Component>
+            <Component Id="cmpIPhCOTMUGWctLx0deqUJ8iVrSCI" Guid="C8316ED9-29A9-47CF-8480-A98E8C7A35DF">
+                <File Id="filnVdVgbEQ2R_lawlh88qmtHw.7xs" KeyPath="yes" Source="$(var.PC_AgentDir)\Newtonsoft.Json.xml" />
+            </Component>
+            <Component Id="cmpLTNFOLk6fLJiNE_FT.cayPVleIA" Guid="0766E249-0B0B-4E5B-8B2A-AD7499241119">
+                <File Id="filb2EsRvQDd6Uj3Qo3k1gb9TUHyRU" KeyPath="yes" Source="$(var.PC_AgentDir)\os_info.json" />
+            </Component>
+            <Component Id="cmplZunVEL2jl5HtDYenrk2NvRXevU" Guid="B72EA4AF-644C-4902-A93F-6907DE56638B">
+                <File Id="filtBOGRSDfIZuh7f8cUDSIeVje2Rg" KeyPath="yes" Source="$(var.PC_AgentDir)\PCInformation.dll" />
+            </Component>
+            <Component Id="cmpptBJLFoXa6K_NKRIvPYl_jr8t6U" Guid="CA28BD50-9586-4233-BC44-E2AB00C56C54">
+                <File Id="filgOWXbgXAnVFY6kEWWGZsB5IfnwE" KeyPath="yes" Source="$(var.PC_AgentDir)\PC_Agent_Service.exe.config" />
+            </Component>
+            <Component Id="cmpn3qjIzWhy8nDpLi_FxQu1pFWKfk" Guid="5B37D639-D051-4FF8-860C-B41412C2D83A">
+                <File Id="filPh87RZCWgwMj3QibxTSi3gjYf_A" KeyPath="yes" Source="$(var.PC_AgentDir)\PC_Agent_Tray.exe" />
+            </Component>
+            <Component Id="cmphrs.H5MpqbZf8bD.JCJrQ.JKNno" Guid="8A00156A-567B-4F30-80FF-411E9DF9D9B2">
+                <File Id="fil3vo47PYe7CpfLqtYkCE1z1hfqFk" KeyPath="yes" Source="$(var.PC_AgentDir)\PC_Agent_Tray.exe.config" />
+            </Component>
+            <Component Id="cmpyd_g3X_cey3ewvXgwPTfbAaiVe4" Guid="34CDF0FB-551C-4575-A24A-E5013ABF6724">
+                <File Id="filn1qvA8RxBSs_mZ_oOcMvHRvCLSc" KeyPath="yes" Source="$(var.PC_AgentDir)\pc_agent_version.json" />
+            </Component>
+            <Component Id="cmpHU5i_2qgncboUh4sm7aZfSSI3Y4" Guid="43B0144B-84FC-4EDE-9A5A-69F3785D607D">
+                <File Id="filFo3vXb7UAakvJ5W2wL3oFmONvpk" KeyPath="yes" Source="$(var.PC_AgentDir)\ServiceControllerApp.exe" />
+            </Component>
+            <Component Id="cmpxzCZCNPiY3dGNV9EBMqMvv5vks4" Guid="ACF3B359-E6C8-4F60-A890-D18A8FBFB127">
+                <File Id="filO6nyKhwidDEYaQS.9RE88PwoYnk" KeyPath="yes" Source="$(var.PC_AgentDir)\ServiceControllerApp.exe.config" />
+            </Component>
+            <Component Id="cmp7cF19U1Q4oOHN9ETcG0l7InyYeI" Guid="96DE6DFD-DF90-4C21-995C-E7FBAEF59D25">
+                <File Id="filpCVKR2HCGdgPlhrwfkZBqShIGUA" KeyPath="yes" Source="$(var.PC_AgentDir)\smartctl.exe" />
+            </Component>
+            <Component Id="cmpUGy7eig91K_xfrODUQ9EeHn3R6U" Guid="A7EC8766-3160-4622-A034-F3806741ED49">
+                <File Id="filBDnZnp_dTb1zCp3TEWuwYLnj_k4" KeyPath="yes" Source="$(var.PC_AgentDir)\smartctl.txt" />
+            </Component>
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <ComponentGroup Id="PC_AgentGroup">
+            <ComponentRef Id="cmpdHz6T7HFG4CIu0NPF01xTfxD9sY" />
+            <ComponentRef Id="cmpn0nKylzKwJimbrLCz8eW1iTlIjQ" />
+            <ComponentRef Id="cmp8XPxNxTdYnVQIASeFcgUlSJIoBo" />
+            <ComponentRef Id="cmpTis97S9V3QQJobxCSFkT0nHhzSU" />
+            <ComponentRef Id="cmpr7d8ot7CLGcQUtQpCmBp5Yucpfg" />
+            <ComponentRef Id="cmpIPhCOTMUGWctLx0deqUJ8iVrSCI" />
+            <ComponentRef Id="cmpLTNFOLk6fLJiNE_FT.cayPVleIA" />
+            <ComponentRef Id="cmplZunVEL2jl5HtDYenrk2NvRXevU" />
+            <ComponentRef Id="cmpptBJLFoXa6K_NKRIvPYl_jr8t6U" />
+            <ComponentRef Id="cmpn3qjIzWhy8nDpLi_FxQu1pFWKfk" />
+            <ComponentRef Id="cmphrs.H5MpqbZf8bD.JCJrQ.JKNno" />
+            <ComponentRef Id="cmpyd_g3X_cey3ewvXgwPTfbAaiVe4" />
+            <ComponentRef Id="cmpHU5i_2qgncboUh4sm7aZfSSI3Y4" />
+            <ComponentRef Id="cmpxzCZCNPiY3dGNV9EBMqMvv5vks4" />
+            <ComponentRef Id="cmp7cF19U1Q4oOHN9ETcG0l7InyYeI" />
+            <ComponentRef Id="cmpUGy7eig91K_xfrODUQ9EeHn3R6U" />
+        </ComponentGroup>
+    </Fragment>
+</Wix>

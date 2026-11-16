@@ -1,0 +1,88 @@
+<!-- Copyright (c) .NET Foundation and contributors. All rights reserved. Licensed under the Microsoft Reciprocal License. See LICENSE.TXT file in the project root for full license information. -->
+
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:thmutil="http://wixtoolset.org/schemas/v4/thmutil">
+	<thmutil:Theme>
+		<thmutil:Window Width="500" Height="390" HexStyle="100a0000" FontId="0">#(loc.Caption)</thmutil:Window>
+		<thmutil:Font Id="0" Height="-12" Weight="500" Foreground="000000" Background="FFFFFF">Segoe UI</thmutil:Font>
+		<thmutil:Font Id="1" Height="-24" Weight="500" Foreground="000000">Segoe UI</thmutil:Font>
+		<thmutil:Font Id="2" Height="-22" Weight="500" Foreground="666666">Segoe UI</thmutil:Font>
+		<thmutil:Font Id="3" Height="-12" Weight="500" Foreground="000000" Background="FFFFFF">Segoe UI</thmutil:Font>
+		<thmutil:Font Id="4" Height="-12" Weight="500" Foreground="ff0000" Background="FFFFFF" Underline="yes">Segoe UI</thmutil:Font>
+
+		<thmutil:Image X="11" Y="11" Width="64" Height="64" ImageFile="logo.png" Visible="yes" />
+		<thmutil:Text X="80" Y="11" Width="-11" Height="64" FontId="1" Visible="yes" DisablePrefix="yes">#(loc.Title)</thmutil:Text>
+
+		<thmutil:Page Name="Help">
+			<thmutil:Text X="11" Y="80" Width="-11" Height="30" FontId="2" DisablePrefix="yes">#(loc.HelpHeader)</thmutil:Text>
+			<thmutil:Text X="11" Y="112" Width="-11" Height="-35" FontId="3" DisablePrefix="yes">#(loc.HelpText)</thmutil:Text>
+			<thmutil:Button Name="HelpCancelButton" X="-11" Y="-11" Width="75" Height="23" TabStop="yes" FontId="0">#(loc.HelpCloseButton)</thmutil:Button>
+		</thmutil:Page>
+
+		<thmutil:Page Name="Install">
+			<thmutil:Text X="11" Y="80" Width="-11" Height="30" FontId="2" DisablePrefix="yes">#(loc.InstallHeader)</thmutil:Text>
+			<thmutil:Text X="11" Y="121" Width="-11" Height="-129" FontId="3" DisablePrefix="yes">#(loc.InstallMessage)</thmutil:Text>
+			<thmutil:Hypertext Name="EulaHyperlink" X="11" Y="-107" Width="-11" Height="17" TabStop="yes" FontId="3" HideWhenDisabled="yes">#(loc.InstallLicenseLinkText)</thmutil:Hypertext>
+			<thmutil:Text Name="InstallVersion" X="11" Y="-73" Width="246" Height="17" FontId="3" DisablePrefix="yes" HideWhenDisabled="yes">#(loc.InstallVersion)</thmutil:Text>
+			<thmutil:Checkbox Name="EulaAcceptCheckbox" X="-11" Y="-41" Width="260" Height="17" TabStop="yes" FontId="3" HideWhenDisabled="yes">#(loc.InstallAcceptCheckbox)</thmutil:Checkbox>
+			<thmutil:Button Name="OptionsButton" X="-261" Y="-11" Width="120" Height="23" TabStop="yes" FontId="0" HideWhenDisabled="yes">#(loc.InstallOptionsButton)</thmutil:Button>
+			<thmutil:Button Name="InstallButton" X="-136" Y="-11" Width="120" Height="23" TabStop="yes" FontId="0">#(loc.InstallInstallButton)</thmutil:Button>
+			<thmutil:Button Name="WelcomeCancelButton" X="-11" Y="-11" Width="120" Height="23" TabStop="yes" FontId="0">#(loc.InstallCloseButton)</thmutil:Button>
+		</thmutil:Page>
+
+		<thmutil:Page Name="Options">
+			<thmutil:Text X="11" Y="80" Width="-11" Height="30" FontId="2" DisablePrefix="yes">#(loc.OptionsHeader)</thmutil:Text>
+			<thmutil:Text X="11" Y="121" Width="-11" Height="17" FontId="3" DisablePrefix="yes">#(loc.OptionsLocationLabel)</thmutil:Text>
+			<thmutil:Editbox Name="FolderEditbox" X="11" Y="143" Width="-91" Height="21" TabStop="yes" FontId="3" FileSystemAutoComplete="yes" />
+			<thmutil:Button Name="BrowseButton" X="-11" Y="142" Width="75" Height="23" TabStop="yes" FontId="3">#(loc.OptionsBrowseButton)</thmutil:Button>
+			<thmutil:Button Name="OptionsOkButton" X="-136" Y="-11" Width="120" Height="23" TabStop="yes" FontId="0">#(loc.OptionsOkButton)</thmutil:Button>
+			<thmutil:Button Name="OptionsCancelButton" X="-11" Y="-11" Width="120" Height="23" TabStop="yes" FontId="0">#(loc.OptionsCancelButton)</thmutil:Button>
+		</thmutil:Page>
+
+		<thmutil:Page Name="FilesInUse">
+			<thmutil:Text X="11" Y="80" Width="-11" Height="30" FontId="2" DisablePrefix="yes">#(loc.FilesInUseHeader)</thmutil:Text>
+			<thmutil:Text X="11" Y="121" Width="-11" Height="34" FontId="3" DisablePrefix="yes">#(loc.FilesInUseLabel)</thmutil:Text>
+			<thmutil:Text Name="FilesInUseText" X="11" Y="150" Width="-11" Height="-86" FontId="3" DisablePrefix="yes" HexStyle="0x0000000C" />
+			<thmutil:Button Name="FilesInUseCloseRadioButton" X="11" Y="-60" Width="-11" Height="23" TabStop="yes" FontId="0" HideWhenDisabled="yes" HexStyle="0x000009">#(loc.FilesInUseCloseRadioButton)</thmutil:Button>
+			<thmutil:Button Name="FilesInUseDontCloseRadioButton" X="11" Y="-40" Width="-11" Height="23" TabStop="yes" FontId="0" HideWhenDisabled="yes" HexStyle="0x000009">#(loc.FilesInUseDontCloseRadioButton)</thmutil:Button>
+			<thmutil:Button Name="FilesInUseOkButton" X="-136" Y="-11" Width="120" Height="23" TabStop="yes" FontId="0" HideWhenDisabled="yes">#(loc.FilesInUseOkButton)</thmutil:Button>
+			<thmutil:Button Name="FilesInUseCancelButton" X="-11" Y="-11" Width="120" Height="23" TabStop="yes" FontId="0">#(loc.FilesInUseCancelButton)</thmutil:Button>
+		</thmutil:Page>
+
+		<thmutil:Page Name="Progress">
+			<thmutil:Text X="11" Y="80" Width="-11" Height="30" FontId="2" DisablePrefix="yes">#(loc.ProgressHeader)</thmutil:Text>
+			<thmutil:Text X="11" Y="121" Width="70" Height="17" FontId="3" DisablePrefix="yes">#(loc.ProgressLabel)</thmutil:Text>
+			<thmutil:Text Name="OverallProgressPackageText" X="85" Y="121" Width="-11" Height="17" FontId="3" DisablePrefix="yes">#(loc.OverallProgressPackageText)</thmutil:Text>
+			<thmutil:Progressbar Name="OverallCalculatedProgressbar" X="11" Y="143" Width="-11" Height="15" />
+			<thmutil:Button Name="ProgressCancelButton" X="-11" Y="-11" Width="120" Height="23" TabStop="yes" FontId="0">#(loc.ProgressCancelButton)</thmutil:Button>
+		</thmutil:Page>
+
+		<thmutil:Page Name="Modify">
+			<thmutil:Text X="11" Y="80" Width="-11" Height="30" FontId="2" DisablePrefix="yes">#(loc.ModifyHeader)</thmutil:Text>
+			<thmutil:Button Name="RepairButton" X="-261" Y="-11" Width="75" Height="23" TabStop="yes" FontId="0" HideWhenDisabled="yes">#(loc.ModifyRepairButton)</thmutil:Button>
+			<thmutil:Button Name="UninstallButton" X="-136" Y="-11" Width="120" Height="23" TabStop="yes" FontId="0">#(loc.ModifyUninstallButton)</thmutil:Button>
+			<thmutil:Button Name="ModifyCancelButton" X="-11" Y="-11" Width="120" Height="23" TabStop="yes" FontId="0">#(loc.ModifyCloseButton)</thmutil:Button>
+		</thmutil:Page>
+
+		<thmutil:Page Name="Success">
+			<thmutil:Text Name="SuccessHeader" X="11" Y="80" Width="-11" Height="30" FontId="2" HideWhenDisabled="yes" DisablePrefix="yes">#(loc.SuccessHeader)</thmutil:Text>
+			<thmutil:Text Name="SuccessInstallHeader" X="11" Y="80" Width="-11" Height="30" FontId="2" HideWhenDisabled="yes" DisablePrefix="yes">#(loc.SuccessInstallHeader)</thmutil:Text>
+			<thmutil:Text Name="SuccessRepairHeader" X="11" Y="80" Width="-11" Height="30" FontId="2" HideWhenDisabled="yes" DisablePrefix="yes">#(loc.SuccessRepairHeader)</thmutil:Text>
+			<thmutil:Text Name="SuccessUninstallHeader" X="11" Y="80" Width="-11" Height="30" FontId="2" HideWhenDisabled="yes" DisablePrefix="yes">#(loc.SuccessUninstallHeader)</thmutil:Text>
+			<thmutil:Button Name="LaunchButton" X="-91" Y="-11" Width="75" Height="23" TabStop="yes" FontId="0" HideWhenDisabled="yes">#(loc.SuccessLaunchButton)</thmutil:Button>
+			<thmutil:Text Name="SuccessRestartText" X="-11" Y="-51" Width="400" Height="34" FontId="3" HideWhenDisabled="yes" DisablePrefix="yes">#(loc.SuccessRestartText)</thmutil:Text>
+			<thmutil:Button Name="SuccessRestartButton" X="-136" Y="-11" Width="120" Height="23" TabStop="yes" FontId="0" HideWhenDisabled="yes">#(loc.SuccessRestartButton)</thmutil:Button>
+			<thmutil:Button Name="SuccessCancelButton" X="-11" Y="-11" Width="120" Height="23" TabStop="yes" FontId="0">#(loc.SuccessCloseButton)</thmutil:Button>
+		</thmutil:Page>
+
+		<thmutil:Page Name="Failure">
+			<thmutil:Text Name="FailureHeader" X="11" Y="80" Width="-11" Height="30" FontId="2" HideWhenDisabled="yes" DisablePrefix="yes">#(loc.FailureHeader)</thmutil:Text>
+			<thmutil:Text Name="FailureInstallHeader" X="11" Y="80" Width="-11" Height="30" FontId="2" HideWhenDisabled="yes" DisablePrefix="yes">#(loc.FailureInstallHeader)</thmutil:Text>
+			<thmutil:Text Name="FailureUninstallHeader" X="11" Y="80" Width="-11" Height="30" FontId="2" HideWhenDisabled="yes" DisablePrefix="yes">#(loc.FailureUninstallHeader)</thmutil:Text>
+			<thmutil:Text Name="FailureRepairHeader" X="11" Y="80" Width="-11" Height="30" FontId="2" HideWhenDisabled="yes" DisablePrefix="yes">#(loc.FailureRepairHeader)</thmutil:Text>
+			<thmutil:Hypertext Name="FailureMessageText" X="22" Y="110" Width="-11" Height="180" FontId="2" TabStop="yes" HideWhenDisabled="yes" />
+			<thmutil:Text Name="FailureRestartText" X="-11" Y="-51" Width="400" Height="34" FontId="3" HideWhenDisabled="yes" DisablePrefix="yes">#(loc.FailureRestartText)</thmutil:Text>
+			<thmutil:Button Name="FailureRestartButton" X="-136" Y="-11" Width="120" Height="23" TabStop="yes" FontId="0" HideWhenDisabled="yes">#(loc.FailureRestartButton)</thmutil:Button>
+			<thmutil:Button Name="FailureCloseButton" X="-11" Y="-11" Width="120" Height="23" TabStop="yes" FontId="0">#(loc.FailureCloseButton)</thmutil:Button>
+		</thmutil:Page>
+	</thmutil:Theme>
+</Wix>

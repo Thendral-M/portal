@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) .NET Foundation and contributors. All rights reserved. Licensed under the Microsoft Reciprocal License. See LICENSE.TXT file in the project root for full license information. -->
+
+
+<WixLocalization Culture="ja-jp" Language="1041" xmlns="http://schemas.microsoft.com/wix/2006/localization">
+  <String Id="Caption">[WixBundleName] セットアップ</String>
+  <String Id="Title">[WixBundleName]</String>
+  <String Id="InstallHeader">ようこそ</String>
+  <String Id="InstallMessage">[WixBundleName]をコンピューターにインストールします。インストールをクリックすると続行します。閉じるをクリックすると終了します。</String>
+  <String Id="InstallVersion">Version [WixBundleVersion]</String>
+  <String Id="ConfirmCancelMessage">キャンセルしますか？</String>
+  <String Id="ExecuteUpgradeRelatedBundleMessage">Previous version</String>
+  <String Id="HelpHeader">Setup Help</String>
+  <String Id="HelpText">/install | /repair | /uninstall | /layout [directory] - installs, repairs, uninstalls or
+   creates a complete local copy of the bundle in directory. Install is the default.
+
+/passive | /quiet -  displays minimal UI with no prompts or displays no UI and
+   no prompts. By default UI and all prompts are displayed.
+
+/norestart   - suppress any attempts to restart. By default UI will prompt before restart.
+/log log.txt - logs to a specific file. By default a log file is created in %TEMP%.</String>
+  <String Id="HelpCloseButton">&amp;Close</String>
+  <String Id="InstallLicenseLinkText">[WixBundleName] &lt;a href="#"&gt;ライセンス条項&lt;/a&gt;.</String>
+  <String Id="InstallAcceptCheckbox">ライセンス条件に同意する (&amp;A)</String>
+  <String Id="InstallOptionsButton">オプション (&amp;O)</String>
+  <String Id="InstallInstallButton">インストール (&amp;I)</String>
+  <String Id="InstallCloseButton">閉じる (&amp;C)</String>
+  <String Id="OptionsHeader">セットアップオプション</String>
+  <String Id="OptionsLocationLabel">インストールする場所:</String>
+  <String Id="OptionsBrowseButton">参照 (&amp;B)</String>
+  <String Id="OptionsOkButton">OK (&amp;O)</String>
+  <String Id="OptionsCancelButton">キャンセル (&amp;C)</String>
+  <String Id="ProgressHeader">セットアップの進行状況</String>
+  <String Id="ProgressLabel">処理:</String>
+  <String Id="OverallProgressPackageText">初期化中...</String>
+  <String Id="ProgressCancelButton">キャンセル (&amp;C)</String>
+  <String Id="ModifyHeader">選択したアプリケーションを完全に削除します。</String>
+  <String Id="ModifyRepairButton">修復 (&amp;R)</String>
+  <String Id="ModifyUninstallButton">アンインストール (&amp;U)</String>
+  <String Id="ModifyCloseButton">閉じる (&amp;C)</String>
+  <String Id="SuccessRepairHeader">修復が正常に完了しました。</String>
+  <String Id="SuccessUninstallHeader">アンインストールが正常に完了しました。</String>
+  <String Id="SuccessInstallHeader">インストールが正常に完了しました。</String> 
+  <String Id="SuccessHeader">セットアップに成功</String>	
+  <String Id="SuccessLaunchButton">&amp;Launch</String>
+  <String Id="SuccessRestartText">ソフトウェアを使用する前に、コンピュータを再起動する必要があります。</String>
+  <String Id="SuccessRestartButton">再起動 (&amp;R)</String>
+  <String Id="SuccessCloseButton">閉じる (&amp;C)</String>
+  <String Id="FailureHeader">セットアップを中断しました</String>
+  <String Id="FailureInstallHeader">セットアップを中断しました</String>
+  <String Id="FailureUninstallHeader">セットアップを中断しました</String>
+  <String Id="FailureRepairHeader">セットアップを中断しました</String> 
+  <String Id="FailureHyperlinkLogText">１つ以上の問題により、セットアップを中断しました。 問題を修正してから、セットアップを再試行してください。 詳細： &lt;a href="#"&gt;log file&lt;/a&gt;.</String>
+  <String Id="FailureRestartText">ソフトウェアのロールバックを完了するには、コンピューターを再起動する必要があります。</String>
+  <String Id="FailureRestartButton">再起動 (&amp;R)</String>
+  <String Id="FailureCloseButton">閉じる (&amp;C)</String>
+  <String Id="FilesInUseHeader">使用中のファイル</String>
+  <String Id="FilesInUseLabel">次のアプリケーションは、更新が必要なファイルを使用しています:</String>
+  <String Id="FilesInUseCloseRadioButton">アプリケーションを閉じて続行します。 (&amp;)</String>
+  <String Id="FilesInUseDontCloseRadioButton">アプリケーションを閉じないで続行します。 (&amp;D) 再起動が必要になります。OK</String>
+  <String Id="FilesInUseOkButton">OK (&amp;O)</String>
+  <String Id="FilesInUseCancelButton">キャンセル (&amp;C)</String>
+  <String Id="ErrorFailNoActionReboot">システムの再起動が必要なため、アクションは実行されませんでした。</String>
+</WixLocalization>

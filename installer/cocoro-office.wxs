@@ -1,0 +1,188 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+	<?define CurrentVersion="2.8.203"?>
+	<?define AppVersion="2.8.103"?>
+	<Package Name="COCORO OFFICE ポータルアプリ $(var.CurrentVersion)" Language="1041" Version="$(var.CurrentVersion)" Manufacturer="SHARP" UpgradeCode="4421B90C-DD5C-460F-A63A-F7BBEF8EA403" Codepage="932" InstallerVersion="200">
+		<SummaryInformation Description="COCORO OFFICE ポータルアプリ $(var.CurrentVersion)" Codepage="932" />
+		<Media Id="1" Cabinet="simple.cab" EmbedCab="yes" />
+		<StandardDirectory Id="ProgramFilesFolder">
+			<Directory Id="SHARP" Name="SHARP">
+				<Directory Id="INSTALLDIR" Name="COCORO OFFICE">
+					<Directory Id="Portal" Name="Portal">
+						<Component Id="PortalExeComponent" Guid="*">
+							<File Id="PortalExe" Name="cocoro-office.exe" Source="$(var.PortalDir)\cocoro-office.exe" KeyPath="yes"/>
+					  </Component>
+					</Directory>
+					<Directory Id="NAS_Tool" Name="NAS Tool" />
+					<Directory Id="PC_Agent" Name="PC Agent">
+						<Component Id="IWBINFOSERVICE.EXE" DiskId="1" Guid="0CA4DE50-D2C5-497B-9C4B-59FE41750487">
+							<File Id="IWBINFOSERVICE.EXE" Name="IWBInfoService.exe" Source="InstallModules\PC_Agent_Services\IWBInfoService.exe" />
+							<ServiceInstall Id="IWBInfoServiceInstall" Name="SH_IWB_INFO_SERVICE" Type="ownProcess" Start="auto" ErrorControl="normal" DisplayName="IWB Info Service" />
+							<ServiceControl Id="IWBInfoServiceControl" Name="SH_IWB_INFO_SERVICE" Start="install" Stop="uninstall" Remove="uninstall" />
+						</Component>
+						<Component Id="PC_AGENT_SERVICE.EXE" DiskId="1" Guid="CDDF7E5C-43A5-4BE1-819E-E78E0307B8B1">
+							<File Id="PC_AGENT_SERVICE.EXE" Name="PC_Agent_Service.exe" Source="InstallModules\PC_Agent_Services\PC_Agent_Service.exe" />
+							<ServiceInstall Id="PCAgentServiceInstall" Name="PCAgentService" Type="ownProcess" Start="auto" ErrorControl="normal" DisplayName="PCAgentService" />
+							<ServiceControl Id="PCAgentServiceControl" Name="PCAgentService" Start="install" Stop="uninstall" Remove="uninstall" />
+						</Component>
+					</Directory>
+					<Directory Id="TSVerification" Name="TSVerification" />
+				</Directory>
+			</Directory>
+		</StandardDirectory>
+		<StandardDirectory Id="DesktopFolder" />
+		<StandardDirectory Id="ProgramMenuFolder">
+			<Directory Id="ApplicationProgramMenuFolder" Name="SHARP COCORO OFFICE" />
+		</StandardDirectory>
+		<Component Id="HKCURegistry" Guid="99C5091F-57C8-49BC-A815-703F8C6338C1" Directory="TARGETDIR">
+			<RegistryValue Root="HKCU" Key="Software\SHARP\COCORO OFFICE Portal Application" Name="InstallDir" Type="string" Value="[INSTALLDIR]" />
+			<RegistryValue Root="HKCU" Key="Software\SHARP\PCAgent" Name="pc_portal_version" Type="string" Value="$(var.AppVersion)" />
+		</Component>
+		<Component Id="EnableDesktopShortcut" Guid="04EAC477-511A-4FE1-BDCB-B0A20B8894BA" Directory="TARGETDIR" Condition="INSTALLDESKTOPSHORTCUT=&quot;1&quot;">
+			<Shortcut Id="DesktopShortcut" Name="COCORO OFFICE" Target="[Portal]cocoro-office.exe" Directory="DesktopFolder" WorkingDirectory="Portal" />
+			<RegistryValue Root="HKCU" Key="Software\SHARP\COCORO OFFICE Portal Application" Name="Installed" Type="integer" Value="1" KeyPath="yes" />
+			<RegistryValue Root="HKCU" Key="Software\SHARP\COCORO OFFICE Portal Application" Name="DesktopShortcut" Type="string" Value="1" />
+
+		</Component>
+		<Component Id="DisableDesktopShortcut" Guid="95859F8E-8E67-41A9-99C4-3E1AD18C4AA5" Directory="TARGETDIR" Condition="INSTALLDESKTOPSHORTCUT&lt;&gt;&quot;1&quot;">
+			<RegistryValue Root="HKCU" Key="Software\SHARP\COCORO OFFICE Portal Application" Name="DesktopShortcut" Type="string" Value="0" />
+
+		</Component>
+		<Component Id="HKLMRegistry" Guid="99B0BD41-0C09-4330-8015-3F5FA9529B8A" Directory="TARGETDIR">
+			<RegistryValue Root="HKLM" Key="SOFTWARE\Microsoft\Windows\CurrentVersion\Run" Name="PC_Agent_Tray" Type="string" Value="[PC_Agent]PC_Agent_Tray.exe" />
+		</Component>
+
+		<Feature Id="DefaultFeature" Title="Main Feature" Level="1">
+			<ComponentGroupRef Id="PortalGroup" />
+			<ComponentGroupRef Id="NAS_ToolGroup" />
+			<ComponentGroupRef Id="PC_AgentGroup" />
+			<ComponentGroupRef Id="TSVerificationGroup" />
+			<ComponentRef Id="EnableDesktopShortcut" />
+			<ComponentRef Id="DisableDesktopShortcut" />
+			<ComponentRef Id="ProgramMenuShortcut" />
+			<ComponentRef Id="HKCURegistry" />
+			<ComponentRef Id="HKLMRegistry" />
+			<ComponentRef Id="IWBINFOSERVICE.EXE" />
+			<ComponentRef Id="PC_AGENT_SERVICE.EXE" />
+			<ComponentRef Id="PortalExeComponent" />
+		</Feature>
+		<UI />
+		<UIRef Id="CustomUI_InstallDir" />
+		<MajorUpgrade DowngradeErrorMessage="新しいバージョン [ProductName] がインストールされています。" AllowDowngrades="no" AllowSameVersionUpgrades="no" IgnoreRemoveFailure="no" Schedule="afterInstallInitialize" />
+		<PropertyRef Id="WIX_IS_NETFRAMEWORK_48_OR_LATER_INSTALLED" />
+		<Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" />
+		<Property Id="ARPPRODUCTICON" Value="ARPPRODUCTICON.ico" />
+		<Property Id="INSTALLDIR">
+			<RegistrySearch Id="InstallFolderRegistry" Type="raw" Root="HKCU" Key="Software\SHARP\COCORO OFFICE Portal Application" Name="InstallDir" />
+		</Property>
+		<Property Id="CHECKDESKTOPSHORTCUT">
+			<RegistrySearch Id="DesktopShortcutRegistry" Type="raw" Root="HKCU" Key="Software\SHARP\COCORO OFFICE Portal Application" Name="DesktopShortcut" />
+		</Property>
+		<!-- Abort installation if the .NET Framework 4.8 is not installed -->
+		<!--
+        <Condition Message="This application requires .NET Framework 4.8. Please install the .NET Framework then run this installer again."><![CDATA[Installed OR WIX_IS_NETFRAMEWORK_48_OR_LATER_INSTALLED]]></Condition>
+        -->
+		<Icon Id="ARPPRODUCTICON.ico" SourceFile=".\resources\ARPPRODUCTICON.ico" />
+		<WixVariable Id="WixUIBannerBmp" Value=".\resources\installer_top-banner.bmp" />
+		<WixVariable Id="WixUIDialogBmp" Value=".\resources\installer_background.bmp" />
+		<Binary Id="ExecutePortal" SourceFile=".\resources\ExecutePortal.exe" />
+		<Binary Id="CA_PC_Agent_Service" SourceFile=".\resources\CA_PC_Agent_Service.exe" />
+		<Binary Id="CA_PC_Agent_Tray" SourceFile=".\resources\CA_PC_Agent_Tray.exe" />
+		<Binary Id="CA_Is64bit" SourceFile=".\resources\CAIs64bit.dll" />
+		<Binary Id="CA_CheckBrowser_x86" SourceFile=".\resources\x86\CACheckBrowser.dll" />
+		<Binary Id="CA_CheckBrowser_x64" SourceFile=".\resources\x64\CACheckBrowser.dll" />
+		<Binary Id="CA_CheckApplication" SourceFile=".\resources\CACheckApplication.dll" />
+		<Binary Id="CA_NAS_Tool" SourceFile=".\resources\CA_NAS_Tool.exe" />
+		<Binary Id="COMigrationTool" SourceFile=".\resources\COMigrationTool.exe" />
+		<Binary Id="CAIStoMSISettings" SourceFile=".\resources\CAIStoMSISettings.dll" />
+		<Binary Id="CA_DummySetup" SourceFile=".\resources\CA_DummySetup.exe" />
+		<Binary Id="WACC" SourceFile=".\resources\WACC.exe" />
+		<CustomAction Id="InstallPortal" Execute="deferred" Return="ignore" ExeCommand="&quot;[Portal]cocoro-office.exe&quot; --install &quot;COCORO OFFICEを登録しています。&quot;" BinaryRef="ExecutePortal" />
+		<CustomAction Id="UpdatePortal" Execute="deferred" Return="ignore" ExeCommand="&quot;[Portal]cocoro-office.exe&quot; --update &quot;COCORO OFFICEを登録しています。&quot;" BinaryRef="ExecutePortal"/>
+		<CustomAction Id="UninstallPortal" Execute="deferred" Return="ignore" ExeCommand="&quot;[Portal]cocoro-office.exe&quot; --uninstall &quot;COCORO OFFICEを登録解除しています。&quot;" BinaryRef="ExecutePortal"/>
+		<CustomAction Id="StopPC_Agent_Service" Return="ignore" ExeCommand="-up" BinaryRef="CA_PC_Agent_Service" />
+		<CustomAction Id="InstallPC_Agent_Tray" Execute="deferred" Return="ignore" BinaryRef="CA_PC_Agent_Tray" ExeCommand="-i &quot;[INSTALLDIR]PC Agent&quot;" />
+		<CustomAction Id="UninstallPC_Agent_Tray" Execute="deferred" Return="ignore" BinaryRef="CA_PC_Agent_Tray" ExeCommand="-u &quot;[INSTALLDIR]PC Agent&quot;" />
+		<CustomAction Id="UpdateBeforePC_Agent_Tray" Return="ignore" BinaryRef="CA_PC_Agent_Tray" ExeCommand="-upb &quot;[INSTALLDIR]PC Agent&quot;" />
+		<CustomAction Id="UpdateAfterPC_Agent_Tray" Execute="deferred" Return="ignore" BinaryRef="CA_PC_Agent_Tray" ExeCommand="-upa &quot;[INSTALLDIR]PC Agent&quot;" />
+		<CustomAction Id="Is64bit" BinaryRef="CA_Is64bit" DllEntry="Is64bit" />
+		<CustomAction Id="CheckBrowser_x86" Return="check" BinaryRef="CA_CheckBrowser_x86" DllEntry="CheckBrowser" />
+		<CustomAction Id="CheckBrowser_x64" Return="check" BinaryRef="CA_CheckBrowser_x64" DllEntry="CheckBrowser" />
+		<CustomAction Id="TaskKillPortal" Return="check" BinaryRef="CA_CheckApplication" DllEntry="TaskKillPortal" />
+		<CustomAction Id="InstallNAS_Tool" Execute="deferred" Return="ignore" Impersonate="no" BinaryRef="CA_NAS_Tool" ExeCommand="-i &quot;[NAS_Tool]ainas-delegator.exe&quot;" />
+		<CustomAction Id="UninstallNAS_Tool" Execute="deferred" Return="ignore" Impersonate="no" BinaryRef="CA_NAS_Tool" ExeCommand="-u &quot;[NAS_Tool]ainas-delegator.exe&quot;" />
+		<CustomAction Id="SetDesktopShortcutRegistry" Property="INSTALLDESKTOPSHORTCUT" Value="1" />
+		<CustomAction Id="COMigration" Execute="deferred" Return="check" Impersonate="no" BinaryRef="COMigrationTool" ExeCommand="" />
+		<CustomAction Id="BackupSettings" Return="ignore" BinaryRef="CAIStoMSISettings" DllEntry="BackupSettings" />
+		<CustomAction Id="BackupAppData" Execute="deferred" Return="ignore" BinaryRef="CAIStoMSISettings" DllEntry="BackupAppData" />
+		<CustomAction Id="DisableStartupPortal" Execute="deferred" Return="ignore" BinaryRef="CAIStoMSISettings" DllEntry="DisableStartupPortal" />
+		<CustomAction Id="RestoreAppData" Execute="deferred" Return="ignore" BinaryRef="CAIStoMSISettings" DllEntry="RestoreAppData" />
+		<CustomAction Id="InstallCreateVersionJson" Execute="deferred" Return="ignore" BinaryRef="CAIStoMSISettings" DllEntry="CreateVersionJson" />
+		<CustomAction Id="UpdateCreateVersionJson" Execute="deferred" Return="ignore" BinaryRef="CAIStoMSISettings" DllEntry="CreateVersionJson" />
+		<CustomAction Id="InstallDummy" Execute="deferred" Return="ignore" Impersonate="no" BinaryRef="CA_DummySetup" ExeCommand="i[Portal]" />
+		<CustomAction Id="UninstallDummy" Execute="deferred" Return="ignore" Impersonate="no" BinaryRef="CA_DummySetup" ExeCommand="u[Portal]" />
+		<CustomAction Id="ClearCache" Execute="deferred" Return="ignore" BinaryRef="WACC" ExeCommand="&quot;cocoro-office&quot;" />
+		<CustomAction Id="LaunchPortalApp" Execute="deferred" Impersonate="yes" Return="asyncNoWait" ExeCommand="--from-installer" FileRef="PortalExe"/>
+		<InstallExecuteSequence>
+			<Custom Action="BackupSettings" After="AppSearch" Condition="(NOT Installed) AND (NOT WIX_UPGRADE_DETECTED)" />
+			<Custom Action="SetDesktopShortcutRegistry" After="BackupSettings" Condition="CHECKDESKTOPSHORTCUT=&quot;1&quot;" />
+			<Custom Action="InstallPortal" Before="InstallFinalize" Condition="(NOT Installed) AND (NOT WIX_UPGRADE_DETECTED)" />
+			<Custom Action="InstallCreateVersionJson" After="InstallPortal" Condition="(NOT Installed) AND (NOT WIX_UPGRADE_DETECTED)" />
+			<Custom Action="InstallPC_Agent_Tray" Before="InstallFinalize" Condition="(NOT Installed) AND (NOT WIX_UPGRADE_DETECTED)" />
+			<Custom Action="InstallNAS_Tool" Before="InstallFinalize" Condition="(NOT Installed) AND (NOT WIX_UPGRADE_DETECTED)" />
+			<Custom Action="InstallDummy" Before="InstallFinalize" Condition="(NOT Installed) AND (NOT WIX_UPGRADE_DETECTED)" />
+			<Custom Action="TaskKillPortal" Before="InstallValidate" Condition="((NOT Installed) AND WIX_UPGRADE_DETECTED) OR (REMOVE=&quot;ALL&quot; AND NOT UPGRADINGPRODUCTCODE)" />
+			<Custom Action="UpdatePortal" Before="InstallFinalize" Condition="(NOT Installed) AND WIX_UPGRADE_DETECTED" />
+			<Custom Action="UpdateBeforePC_Agent_Tray" Before="InstallValidate" Condition="(NOT Installed) AND WIX_UPGRADE_DETECTED" />
+			<Custom Action="UpdateAfterPC_Agent_Tray" Before="InstallFinalize" Condition="(NOT Installed) AND WIX_UPGRADE_DETECTED" />
+			<Custom Action="UninstallPortal" After="RemoveExistingProducts" Condition="REMOVE=&quot;ALL&quot; AND NOT UPGRADINGPRODUCTCODE" />
+			<Custom Action="StopPC_Agent_Service" Before="InstallValidate" Condition="((NOT Installed) AND WIX_UPGRADE_DETECTED) OR (REMOVE=&quot;ALL&quot; AND NOT UPGRADINGPRODUCTCODE)" />
+			<Custom Action="UninstallPC_Agent_Tray" After="RemoveExistingProducts" Condition="REMOVE=&quot;ALL&quot; AND NOT UPGRADINGPRODUCTCODE" />
+			<Custom Action="UninstallNAS_Tool" After="RemoveExistingProducts" Condition="REMOVE=&quot;ALL&quot; AND NOT UPGRADINGPRODUCTCODE" />
+			<Custom Action="UninstallDummy" After="RemoveExistingProducts" Condition="REMOVE=&quot;ALL&quot; AND NOT UPGRADINGPRODUCTCODE" />
+			<Custom Action="Is64bit" After="LaunchConditions" Condition="(NOT Installed) AND (NOT WIX_UPGRADE_DETECTED)" />
+			<Custom Action="CheckBrowser_x86" After="Is64bit" Condition="OSBIT=&quot;32&quot;" />
+			<Custom Action="CheckBrowser_x64" After="Is64bit" Condition="OSBIT=&quot;64&quot;" />
+			<Custom Action="BackupAppData" After="RemoveExistingProducts" Condition="INSTALLED_PORTAL" />
+			<Custom Action="COMigration" After="BackupAppData" Condition="INSTALLED_PORTAL" />
+			<Custom Action="DisableStartupPortal" After="InstallPortal" Condition="INSTALLED_PORTAL AND DISABLE_STARTUP_PORTAL=&quot;1&quot;" />
+			<Custom Action="RestoreAppData" After="InstallPortal" Condition="INSTALLED_PORTAL" />
+			<Custom Action="UpdateCreateVersionJson" After="RestoreAppData" Condition="INSTALLED_PORTAL=&quot;1.26.203&quot;" />
+			<Custom Action="ClearCache" Before="InstallFinalize" Condition="REMOVE=&quot;ALL&quot; AND NOT UPGRADINGPRODUCTCODE" />
+			<Custom Action="LaunchPortalApp" Before="InstallFinalize" Condition="NOT Installed"/>
+		</InstallExecuteSequence>
+		<InstallUISequence>
+			<Custom Action="BackupSettings" After="AppSearch" Condition="(NOT Installed) AND (NOT WIX_UPGRADE_DETECTED)" />
+			<Custom Action="SetDesktopShortcutRegistry" After="BackupSettings" Condition="CHECKDESKTOPSHORTCUT&lt;&gt;&quot;0&quot;" />
+		</InstallUISequence>
+		<Upgrade Id="7D019C5D-2C5C-4220-93E1-827E7CFC2FCA" />
+		<DirectoryRef Id="ApplicationProgramMenuFolder">
+			<Component Id="ProgramMenuShortcut" Guid="A54292CF-40CD-4A81-B866-0A5EDD54F3AC">
+				<RemoveFolder Id="ApplicationProgramMenuFolder" On="uninstall" />
+				<RegistryValue Root="HKCU" Key="Software\SHARP\COCORO OFFICE Portal Application" Name="Installed" Type="integer" Value="1" KeyPath="yes" />
+				<Shortcut Id="ApplicationStartMenuShortcut" Name="COCORO OFFICE" Target="[Portal]cocoro-office.exe" WorkingDirectory="Portal" />
+			</Component>
+		</DirectoryRef>
+	</Package>
+	<Fragment>
+    <ComponentGroup Id="PortalGroup">
+      <Files Directory="Portal" Include="$(var.PortalDir)\**">
+			  <Exclude Files="$(var.PortalDir)\cocoro-office.exe" />
+		  </Files>
+    </ComponentGroup>
+  </Fragment>
+  <Fragment>
+    <ComponentGroup Id="NAS_ToolGroup">
+      <Files Directory="NAS_Tool" Include="$(var.NAS_ToolDir)\**" />
+    </ComponentGroup>
+  </Fragment>
+  <Fragment>
+    <ComponentGroup Id="PC_AgentGroup">
+      <Files Directory="PC_Agent" Include="$(var.PC_AgentDir)\**" />
+    </ComponentGroup>
+  </Fragment>
+  <Fragment>
+    <ComponentGroup Id="TSVerificationGroup">
+      <Files Directory="TSVerification" Include="$(var.TSVerificationDir)\**" />
+    </ComponentGroup>
+  </Fragment>
+</Wix>

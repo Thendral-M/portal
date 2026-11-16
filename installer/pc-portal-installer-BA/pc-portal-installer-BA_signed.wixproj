@@ -1,0 +1,45 @@
+<Project Sdk="WixToolset.Sdk/6.0.2">
+  <PropertyGroup>
+    <OutputType>Bundle</OutputType>
+    <OutputName>cocoro-office_installer</OutputName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+    <VerboseOutput>true</VerboseOutput>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="bundleresources\ARPPRODUCTICON.ico" />
+    <Content Include="bundleresources\cocorooffice256x256.bmp" />
+    <Content Include="bundleresources\cocorooffice256x256.png" />
+    <Content Include="bundleresources\cocorooffice32x32.bmp" />
+    <Content Include="bundleresources\cocorooffice32x32.png" />
+    <Content Include="config.wxi" />
+    <Content Include="HyperlinkLargeTheme.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="WixToolset.BootstrapperApplications.wixext" Version="6.0.2" />
+  </ItemGroup>
+  <PropertyGroup> 
+    <SignOutput>true</SignOutput>
+  </PropertyGroup>
+  <Target Name="FindSignTool">
+      <PropertyGroup>
+        <WindowsKitsRoot>$([MSBuild]::GetRegistryValueFromView('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Kits\Installed Roots', 'KitsRoot10', null, RegistryView.Registry32, RegistryView.Default))</WindowsKitsRoot>
+        <WindowsKitsRoot Condition="'$(WindowsKitsRoot)' == ''">$([MSBuild]::GetRegistryValueFromView('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Kits\Installed Roots', 'KitsRoot81', null, RegistryView.Registry32, RegistryView.Default))</WindowsKitsRoot>
+        <WindowsKitsRoot Condition="'$(WindowsKitsRoot)' == ''">$([MSBuild]::GetRegistryValueFromView('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Kits\Installed Roots', 'KitsRoot', null, RegistryView.Registry32, RegistryView.Default))</WindowsKitsRoot>
+        <SignToolPath Condition="'$(SignToolPath)' == '' And '$(Platform)' == 'AnyCPU' and Exists('$(WindowsKitsRoot)bin\10.0.22621.0\x64\signtool.exe')">$(WindowsKitsRoot)bin\10.0.22621.0\x64\</SignToolPath>
+        <SignToolPath Condition="'$(SignToolPath)' == '' And Exists('$(WindowsKitsRoot)bin\10.0.22621.0\$(Platform)\signtool.exe')">$(WindowsKitsRoot)bin\10.0.22621.0\$(Platform)\</SignToolPath>
+        <SignToolPathBin Condition="'$(SignToolPath)' == ''">$([System.IO.Directory]::GetDirectories('$(WindowsKitsRoot)bin',"10.0.*"))</SignToolPathBin>
+        <SignToolPathLen Condition="'$(SignToolPathBin)' != ''">$(SignToolPathBin.Split(';').Length)</SignToolPathLen>
+        <SignToolPathIndex Condition="'$(SignToolPathLen)' != ''">$([MSBuild]::Add(-1, $(SignToolPathLen)))</SignToolPathIndex>
+        <SignToolPathBase Condition="'$(SignToolPathIndex)' != ''">$(SignToolPathBin.Split(';').GetValue($(SignToolPathIndex)))\</SignToolPathBase>
+        <SignToolPath Condition="'$(SignToolPath)' == '' And '$(SignToolPathBase)' != '' And '$(Platform)' == 'AnyCPU'">$(SignToolPathBase)x64\</SignToolPath>
+        <SignToolPath Condition="'$(SignToolPath)' == '' And '$(SignToolPathBase)' != ''">$(SignToolPathBase)$(Platform)\</SignToolPath>
+      </PropertyGroup>
+  </Target>
+  <Target Name="SignBundleEngine" DependsOnTargets="FindSignTool">
+    <Exec Command="&quot;$(SignToolPath)signtool.exe&quot; sign /fd SHA256 /td SHA256 /a /tr http://timestamp.digicert.com /a &quot;@(SignBundleEngine)&quot;" />
+  </Target>
+  <Target Name="SignBundle" DependsOnTargets="FindSignTool">
+    <Exec Command="&quot;$(SignToolPath)signtool.exe&quot; sign /fd SHA256 /td SHA256 /a /tr http://timestamp.digicert.com /a &quot;@(SignBundle)&quot;" />
+  </Target>
+</Project>

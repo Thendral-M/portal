@@ -1,0 +1,108 @@
+﻿<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<assembly xmlns='urn:schemas-microsoft-com:asm.v1' manifestVersion='1.0'>
+  <assemblyIdentity
+    type="win32"
+    name="SKYCOM.SkyPDF.TSVerification"
+    version="3.5.0.4"
+    processorArchitecture="x86"
+  />
+  <file name="SkyViewCOM.dll">
+    <comClass clsid="{e6baea74-0c70-44de-8278-31279d806cfa}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SkyViewControl.1" description="SkyViewControl Class" />
+    <comClass clsid="{4d781732-6979-4f40-81dd-4faa8fb2c4fb}" threadingModel="Both" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPDocInfo.1" description="SPDocInfo Class" />
+    <comClass clsid="{35aefe13-3719-46a5-b937-a1c3118d26e0}" threadingModel="Both" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPSec.1" description="SPSec Class" />
+    <comClass clsid="{c3b1f727-bea8-4b38-9281-c016a6304f57}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPSignatureInfo.1" description="SPSignatureInfo Class" />
+    <comClass clsid="{ad2ea167-0e42-436d-ab4e-a8e4120fce8e}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.OleStream.1" description="OleStream Class" />
+    <comClass clsid="{54cb6b34-77f6-4623-b542-ea90f38379a3}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPPrint.1" description="SPPrint Class" />
+    <comClass clsid="{49de8719-f962-4afd-8269-83559453831b}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.PdfFontInfo.1" description="PdfFontInfo Class" />
+    <comClass clsid="{c767f8b0-2871-4c76-af86-e8b4b712b724}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPAnnot.1" description="SPAnnot Class" />
+    <comClass clsid="{25b17392-b3ed-4d6f-97b7-24fd08391191}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPPage.1" description="SPPage Class" />
+    <comClass clsid="{68ff5317-18ce-4574-86c4-b3014be02975}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPTextData.1" description="SPTextData Class" />
+    <comClass clsid="{2f2caa04-8a08-46f2-8507-0bc868f25571}" threadingModel="Both" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPAnnotSetting.1" description="SPAnnotSetting Class" />
+    <comClass clsid="{e5dc2317-e633-442c-bf84-6aeb5bcafc5e}" threadingModel="Both" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPLine.1" description="SPLine Class" />
+    <comClass clsid="{6d2b373a-e64f-4244-b20f-79bc15854885}" threadingModel="Both" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPRect.1" description="SPRect Class" />
+    <comClass clsid="{509e745c-ab26-411f-983a-e3099a4c5f76}" threadingModel="Both" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPBezier.1" description="SPBezier Class" />
+    <comClass clsid="{d7356f74-34bb-449d-90f1-d17904d751af}" threadingModel="Both" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPColor.1" description="SPColor Class" />
+    <comClass clsid="{2c279747-6eae-4502-9a41-c00b58395512}" threadingModel="Both" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPPen.1" description="SPPen Class" />
+    <comClass clsid="{d3f9e759-f519-4d55-8eb4-fe986f779044}" threadingModel="Both" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPOutlineItem.1" description="SPOutlineItem Class" />
+    <comClass clsid="{a755dc89-743d-4593-85b9-a57a496afc29}" threadingModel="Both" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPOutlineCollection.1" description="SPOutlineCollection Class" />
+    <comClass clsid="{4060ffef-80a9-4c76-90cd-7a1f51df0b2a}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPImage.1" description="SPImage Class" />
+    <comClass clsid="{202338fe-d559-4fa2-901d-49035a968a90}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPPageNumber.1" description="SPPageNumber Class" />
+    <comClass clsid="{86a8537a-fb2d-4e0d-a574-8de22a4586fe}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPSignature.1" description="SPSignature Class" />
+    <comClass clsid="{e175d6d1-9571-46fc-ae23-2cc0c790a91c}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPInitialView.1" description="SPInitialView Class" />
+    <comClass clsid="{d899fd9e-d52f-41ef-92c6-61f4a2c5591b}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPPageBoundaryInfo.1" description="SPPageBoundaryInfo Class" />
+    <comClass clsid="{4f7afa63-2fb0-425a-b864-de4f5bc97e6a}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPInitialPrint.1" description="SPInitialPrint Class" />
+    <comClass clsid="{57490e93-8fa7-4e84-bfd3-4e7601d74933}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPTextForm.1" description="SPTextForm Class" />
+    <comClass clsid="{992b31b3-500f-4eb9-bcae-d842bda89465}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPEmbeddedFileInfo.1" description="SPEmbeddedFileInfo Class" />
+    <comClass clsid="{17b122d9-f040-4a15-975a-4b92bed30d4c}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPAnnotationInfo.1" description="SPAnnotationInfo Class" />
+    <comClass clsid="{69d80923-64f4-4db4-97bb-c731db1769b6}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPActionInfo.1" description="SPActionInfo Class" />
+    <comClass clsid="{4f3b5b5d-605d-489a-95ff-70d886067a3a}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPTextPosition.1" description="SPTextPosition Class" />
+    <comClass clsid="{861aac22-ecf5-46e0-ad67-714ae73de330}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPRecipient.1" description="SPRecipient Class" />
+    <comClass clsid="{051a03e0-cbef-476a-a97f-0da1aad96817}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPRecipientsCollection.1" description="SPRecipientsCollection Class" />
+    <comClass clsid="{dba18e53-08c0-4716-ae89-9d83177e71dc}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPCertInfo.1" description="SPCertInfo Class" />
+    <comClass clsid="{ae79c8ba-c705-4d23-9437-1da4d93d4830}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPCertInfoCollection.1" description="SPCertInfoCollection Class" />
+    <comClass clsid="{3a6bd039-9082-4dfa-935f-ebcd6eb64a09}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPSignatureCertInStore.1" description="SPSignatureCertInStore Class" />
+    <comClass clsid="{4c35103d-aaad-41d2-9a3c-416fa97ec126}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPWatermarkInfo.1" description="SPWatermarkInfo Class" />
+    <comClass clsid="{e79c7a00-87c1-43e2-a3cc-0a95b225cd8c}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPPdfInfo.1" description="SPPdfInfo Class" />
+    <comClass clsid="{b64b1429-bff5-46df-9cc7-a021a292450b}" threadingModel="Both" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPStampInfo.1" description="SPStampInfo Class" />
+    <comClass clsid="{80c5782f-47fb-4577-80cd-e3c228f91d52}" threadingModel="Both" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPLineInfo.1" description="SPDrawInfo Class" />
+    <comClass clsid="{5c82fc9b-9e36-42c9-bb98-06add4df65ec}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPPageLabelsInfo.1" description="SPPageLabelsInfo Class" />
+    <comClass clsid="{ab400ce4-25ab-42be-8e23-80529d9f54dd}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPLayerInfo.1" description="SPLayerInfo Class" />
+    <comClass clsid="{f865a8aa-7353-49e8-a676-e1e5fb7d56e1}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPDestination.1" description="SPDestination Class" />
+    <comClass clsid="{4e45479f-80c6-4aa5-8893-0f1ca8ee8076}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPInkInputInfo.1" description="SPInkInputInfo Class" />
+    <comClass clsid="{b11b2160-5307-4235-8f5f-4b4b55e84de0}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPInkData.1" description="SPInkData Class" />
+    <comClass clsid="{3f41f0fc-51a5-4c8e-b966-bb7562cfedbc}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPTimestamp.1" description="SPTimestamp Class" />
+    <comClass clsid="{c18eafe9-efd6-49a2-9a63-da766f4d0e6d}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPVerifyTimestamp.1" description="SPVerifyTimestamp Class" />
+    <comClass clsid="{501e3d4b-726a-4ad8-9882-c72756dc0e5b}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPSignatureStatus.1" description="SPSignatureStatus Class" />
+    <comClass clsid="{ee869612-52d3-4e84-8a85-f445afe26d59}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPSignatureStatusCollectio.1" description="SPSignatureStatusCollection Class" />
+    <comClass clsid="{a02f961d-d5ef-408c-bd3c-dd8f5c235864}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPInkFormModeInfo.1" description="SPInkFormModeInfo Class" />
+    <comClass clsid="{e98ac279-4e8f-4e94-b50e-346259a6fe51}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPMyNumberInfo.1" description="SPMyNumberInfo Class" />
+    <comClass clsid="{324e6a2e-366e-4a27-9c14-daf4ada36f32}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPChoiceForm.1" description="SPChoiceForm Class" />
+    <comClass clsid="{35ed4f1d-a189-468d-9ece-1ed3f9a3fcfc}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPSelectItemCollection.1" description="SPSelectItemCollection Class" />
+    <comClass clsid="{c8c629a0-464c-4a9e-b077-f6cf35a082d7}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPSelectItem.1" description="SPSelectItem Class" />
+    <comClass clsid="{6e58c2c5-8e85-4728-b55f-500815e1acf3}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPSaveImagePDFParam.1" description="SPSaveImagePDFParam Class" />
+    <comClass clsid="{6825a83e-42d8-4505-b615-4dbc73cf5f58}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPButtonForm.1" description="SPButtonForm Class" />
+    <comClass clsid="{51860af3-a706-4545-92df-24359ca44140}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPButtonInfoCollection.1" description="SPButtonInfoCollection Class" />
+    <comClass clsid="{07f066ed-427f-402b-9800-3d0f63b30517}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPButtonInfo.1" description="SPButtonInfo Class" />
+    <comClass clsid="{d796cf39-ed94-4023-96a0-52df0690c3f9}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPOnlineTimerInfo.1" description="SPOnlineTimerInfo Class" />
+    <comClass clsid="{4624f28c-6144-4d94-a3a8-4431e116383c}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPSignatureVerifyPreference.1" description="SPSignatureVerifyPreference Class" />
+    <comClass clsid="{bbfb3369-d67a-48ec-a8b6-85e605e3c109}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPSignatureVerifyStatus.1" description="SPSignatureVerifyStatus Class" />
+    <comClass clsid="{21cb6a57-58c8-4ad7-a912-968dd9136d33}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPTimestampInfo.1" description="SPTimestampInfo Class" />
+    <comClass clsid="{326b092f-a62d-4016-be47-a76516f07c41}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPPAdESPreference.1" description="SPPAdESPreference Class" />
+    <comClass clsid="{b5a8c561-b417-463d-867c-e20203d26795}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPTimestampAccount.1" description="SPTimestampAccount Class" />
+    <comClass clsid="{80a9dbbb-44c2-4b80-b280-ec2c5851ad32}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPProxy.1" description="SPProxy Class" />
+    <comClass clsid="{41eb2dac-d7b7-4a03-bbf3-f1750fb79f79}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPTacInfo.1" description="SPTacInfo Class" />
+    <comClass clsid="{83653ad5-5110-41b4-8a4c-6d12a1e794a5}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPPushButtonForm.1" description="SPPushButtonForm Class" />
+    <comClass clsid="{3d3609d1-4d90-4cd4-bb66-e4010b2c1748}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPSubmitAction.1" description="SPSubmitAction Class" />
+    <comClass clsid="{835d68ae-ffaa-4c88-897b-18b3c59cd776}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPStub.1" />
+    <comClass clsid="{0ff25c0f-2661-4394-9be8-0fde4bdd0e74}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" description="SPFormEventArgs Class" />
+    <comClass clsid="{78df64f8-260f-483b-b36b-90072a488b8e}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPStrokeInfo.1" />
+    <comClass clsid="{58273736-2e59-40b8-ba62-0fed0bad3fd1}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPFocusInfo.1" description="SPFocusInfo Class" />
+    <comClass clsid="{52edcc21-3fd0-4edd-b6e8-6712e763e43c}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPCustomProperties.1" description="SPCustomProperties Class" />
+    <comClass clsid="{9695e344-3429-4a18-bacf-64a1a748cd37}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPPopupInfo.1" description="SPPopupInfo Class" />
+    <comClass clsid="{e40fc23b-4a90-42db-b3d5-29f346b3f19c}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPMarkerInfo.1" description="SPMarkerInfo Class" />
+    <comClass clsid="{b72b7617-0c68-4853-afa0-c13ef8ded7e9}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPReplyInfo.1" description="SPReplyInfo Class" />
+    <comClass clsid="{2947bf8b-46ae-49d1-bb94-f73784ef60e2}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPStateInfo.1" description="SPStateInfo Class" />
+    <comClass clsid="{e5ee8f1e-0a38-48e8-952c-491c5260011d}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPSaveInfo.1" description="SPSaveInfo Class" />
+    <comClass clsid="{67453038-b7a8-4378-8ca0-1e0b381a7274}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" description="SPEmbeddedFileGetCondition Class" />
+    <comClass clsid="{b6912672-8cdf-47c9-9e99-2c4ced0eb101}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPSVG.1" description="SPSVG Class" />
+    <comClass clsid="{4d46b222-c04f-490f-b9a9-6c9102aad303}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPHTML.1" description="SPHTML Class" />
+    <comClass clsid="{a976393a-7b83-49da-b212-da342e54a5b6}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPGenerationInfo.1" description="SPGenerationInfo Class" />
+    <comClass clsid="{90bc19fd-e7cd-4235-ad4c-9f8746e27a25}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPExtractCondition.1" description="SPExtractCondition Class" />
+    <comClass clsid="{ecae5bb0-873b-4113-9374-030a0c32bd49}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPAttachedInfo.1" description="SPAttachedInfo Class" />
+    <comClass clsid="{ea5dc65d-8cf0-4717-930d-423d460e6045}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPSealInfo.1" description="SPSealInfo Class" />
+    <comClass clsid="{8a98f255-3a0b-481a-8713-3e1e4dfe9dc4}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPSealImageExtractConditio.1" description="SPSealImageExtractCondition Class" />
+    <comClass clsid="{3ae1c975-9d27-4233-9332-e03bd1f99ca1}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPSelectMode.1" description="SPSelectMode Class" />
+    <comClass clsid="{2b4423a2-516f-4d88-bd46-e85483f2e9e1}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPRichMediaWindowInfo.1" description="SPRichMediaWindowInfo Class" />
+    <comClass clsid="{21b0a27e-42c4-4115-a86d-753860659327}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPRichMediaInfo.1" description="SPRichMediaInfo Class" />
+    <comClass clsid="{2ab43e09-90dd-4705-a7dc-03dc7e73a862}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPBiometricInfo.1" description="SPBiometricInfo Class" />
+    <comClass clsid="{1fdc4aab-efcd-4e9c-a04f-132694898e79}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPFontListCache.1" description="SPFontListCache Class" />
+    <comClass clsid="{e5c2f8c5-8eed-4953-a832-19b48ac329e9}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPPasswordRequestEventArgs.1" description="SPPasswordRequestEventArgs Class" />
+    <comClass clsid="{851cdcc1-2e95-4baa-a7e4-25f87bdd6f27}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPPoint.1" description="SPPoint Class" />
+    <comClass clsid="{5e3cee94-7418-4178-9486-a6effbac9d3c}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPPointCollection.1" description="SPPointCollection Class" />
+    <comClass clsid="{814ae174-7f0a-4e90-b4b3-02d8398736e2}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPPdf2ImageInfo.1" description="SPPdf2ImageInfo Class" />
+    <comClass clsid="{b4f91b4e-09e7-403a-aead-2a9447bc2f9e}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPFindStringInfo.1" description="SPFindStringInfo Class" />
+    <comClass clsid="{5b99ee98-1a0b-46a7-a8cd-bf37ba4c3dd0}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPGPKIPreferenceCollection.1" description="SPGPKIPreferenceCollection Class" />
+    <comClass clsid="{fb370446-c2e5-44ca-a72f-6573963928bc}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPGPKIPreference.1" description="SPGPKIPreference Class" />
+    <comClass clsid="{72e67b88-7b17-4200-95fd-355464ecdad1}" threadingModel="Apartment" tlbid="{47fd3aee-33ff-4a68-a1e0-d69fc7431215}" progid="SkyViewCOM.SPCopyAnnotationInfo.1" description="SPCopyAnnotationInfo Class" />
+  </file>
+</assembly>

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
+  <noInheritable></noInheritable>
+  <assemblyIdentity type="win32" name="AMANO.e-Timing.PDFLib-W" version="4.0.25.129" processorArchitecture="x86" publicKeyToken="969ae4c3abbd6cd9"></assemblyIdentity>
+  <file name="asdtstpdflibw.dll" hashalg="SHA1" hash="a7df97c48706935975dfc6b7d7faa3ad70e5f240"><asmv2:hash xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#"><dsig:Transforms><dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity"></dsig:Transform></dsig:Transforms><dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></dsig:DigestMethod><dsig:DigestValue>QotNThZV6p+CabI4QSEV6MLQXso=</dsig:DigestValue></asmv2:hash></file>
+  <file name="asdtstzlib1.dll" hashalg="SHA1" hash="e607d820cfa22034dbeade850e1277f5288e4a6d"><asmv2:hash xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#"><dsig:Transforms><dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity"></dsig:Transform></dsig:Transforms><dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></dsig:DigestMethod><dsig:DigestValue>Y+niM4nfzLzcKVlnXIti6Cx+WuM=</dsig:DigestValue></asmv2:hash></file>
+</assembly>

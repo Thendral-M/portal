@@ -1,0 +1,24 @@
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:bal="http://wixtoolset.org/schemas/v4/wxs/bal">
+  <?include config.wxi ?>
+  <?define CurrentVersion="2.8.203"?>
+  <Bundle Name="$(var.ProductName)" Manufacturer="$(var.Manufacturer)" Version="$(var.CurrentVersion)" UpgradeCode="$(var.UpgradeCode)" Copyright="Copyright @ 2020 SHARP CORPORATION. All Rights Reserved." DisableModify="yes" IconSourceFile="bundleresources\ARPPRODUCTICON.ico"
+            SplashScreenSourceFile="bundleresources\cocorooffice256x256.bmp">
+	<bal:Condition Message="お使いのバージョンは最新です。" Condition="(NOT WixBundleInstalled) OR WixBundleCommandLineAction=4" />
+    <BootstrapperApplication>
+      <bal:WixStandardBootstrapperApplication  
+		  LocalizationFile="HyperlinkTheme_ja-jp.wxl"
+          ThemeFile="HyperlinkLargeTheme.xml"
+		  SuppressOptionsUI="yes"
+          SuppressRepair="yes"
+		  LicenseUrl=""
+		  LogoFile="bundleresources\cocorooffice1024x1024.png" 
+		  Theme="hyperlinkLicense" />
+		<Payload Name="InstallerIcon.ico" SourceFile="bundleresources\ARPPRODUCTICON.ico" Compressed="yes" />
+    </BootstrapperApplication>
+
+    <Chain>
+		<MsiPackage SourceFile="cocoro-office.msi" Compressed="yes" Vital="yes" bal:DisplayInternalUICondition="WixBundleAction = 6"></MsiPackage>
+    </Chain>
+
+  </Bundle>
+</Wix>

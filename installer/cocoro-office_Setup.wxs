@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:bal="http://schemas.microsoft.com/wix/BalExtension"
+     xmlns:util="http://schemas.microsoft.com/wix/UtilExtension"
+     xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
+        <?define CurrentVersion="2.4.201"?>
+        <Bundle Name="COCORO OFFICE ポータルアプリ $(var.CurrentVersion)" Version="$(var.CurrentVersion)" Manufacturer="SHARP" UpgradeCode="4DFC367A-74DE-45C1-BF92-5814C9BB2E2A" Copyright="Copyright @ 2020 SHARP CORPORATION. All Rights Reserved." DisableModify="yes" IconSourceFile="resources\ARPPRODUCTICON.ico" SplashScreenSourceFile="resources\cocorooffice256x256.bmp">
+        <bal:Condition Message="お使いのバージョンは最新です。">(NOT WixBundleInstalled) OR WixBundleAction=3</bal:Condition>
+        <BootstrapperApplicationRef
+            Id="WixStandardBootstrapperApplication.HyperlinkLicense">
+            <bal:WixStandardBootstrapperApplication
+                LocalizationFile="HyperlinkTheme_ja-jp.wxl"
+                ThemeFile="HyperlinkLargeTheme_custom.xml"
+                SuppressOptionsUI="yes"
+                SuppressRepair="yes"
+                SuppressDowngradeFailure="no"
+                LicenseUrl=""
+                LogoFile="resources\cocorooffice32x32.bmp"
+            />
+            <!--
+            LicenseUrl="https://jp.sharp/business/cocoro-office/policy/privacy.html"
+            -->
+        </BootstrapperApplicationRef>
+        <Chain>
+            <PackageGroupRef Id="NetFx48Redist"/>
+            <!--
+            <ExePackage Id="MigrationTool" SourceFile="COMigrationTool.exe" Cache="no" Compressed="yes" PerMachine="yes" Permanent="yes" Vital="yes"/>
+            -->
+            <RollbackBoundary />
+            
+            <MsiPackage Id="MainPackage" SourceFile="cocoro-office.msi" DisplayInternalUI="yes" Compressed="yes" Vital="yes" />
+        </Chain>
+    </Bundle>
+</Wix>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  $Id: config.wxi 23353 2025-04-03 10:42:38Z thomasb $  -->
+<Include xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <?ifndef ProductVersion ?>
+  <?define ProductVersion="2.8.203"?>
+  <?define true = "true" ?>
+  <?endif?>
+  <?define Manufacturer="SHARP" ?>
+  <?define ProductCode = "*"?>
+  <?define UpgradeCode = "4DFC367A-74DE-45C1-BF92-5814C9BB2E2A"?>
+  <?define FileSrc = ".\Files\Bin"?>
+  <?if $(var.Platform) = x64 ?>
+  <?define ProductName = "COCORO OFFICE ポータルアプリ $(var.ProductVersion)"?>
+  <?define CLSIDRoots = "CLSID;Wow6432Node\CLSID"?>
+  <?define FileSrcPlatform = "..\Files\Bin\x64"?>
+  <?define Win64 = "yes"?>
+  <?else?>
+  <?define ProductName = "COCORO OFFICE ポータルアプリ $(var.ProductVersion)"?>
+  <?define CLSIDRoots = "CLSID"?>
+  <?define FileSrcPlatform = "..\Files\Bin"?>
+  <?define Win64 = "no"?>
+  <?endif?>
+</Include>

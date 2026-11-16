@@ -1,0 +1,31 @@
+{
+	os_Info:[
+		{
+			"os_name" : "Windows 10",
+			"os_major_version" : [{"ver":10},{"ver":6}],
+			"os_minor_version" : [{"ver":0},{"ver":4}],
+			"os_build" : [{"ver":19044}, {"ver":19043},{"ver":19042},{"ver":19041},
+						{"ver":18363},{"ver":18362},{"ver":17763},{"ver":17134},
+						{"ver":16299},{"ver":15063},{"ver":14393},{"ver":10586},
+						{"ver":10240}]
+		},
+		{
+			"os_name" : "Windows 11",
+			"os_major_version" : [{"ver":10}],
+			"os_minor_version" : [{"ver":0}],
+			"os_build" : [{"ver":22000}]
+		},
+		{
+			"os_name" : "Windows 8.1",
+			"os_major_version" : [{"ver":6}],
+			"os_minor_version" : [{"ver":3}],
+			"os_build" : [{"ver":9600}]
+		},
+		{
+			"os_name" : "Windows 8",
+			"os_major_version" : [{"ver":6}],
+			"os_minor_version" : [{"ver":2}],
+			"os_build" : [{"ver":9200}]
+		}		
+	]
+}

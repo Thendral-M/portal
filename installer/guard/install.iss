@@ -1,0 +1,23 @@
+[InstallShield Silent]
+Version=v7.00
+File=Response File
+[File Transfer]
+OverwrittenReadOnly=NoToAll
+[{DB17D435-FC4A-4F4A-9D54-CD05EE7D5AB8}-DlgOrder]
+Dlg0={DB17D435-FC4A-4F4A-9D54-CD05EE7D5AB8}-SdWelcome-0
+Count=3
+Dlg1={DB17D435-FC4A-4F4A-9D54-CD05EE7D5AB8}-SdStartCopy2-0
+Dlg2={DB17D435-FC4A-4F4A-9D54-CD05EE7D5AB8}-SdFinish-0
+[{DB17D435-FC4A-4F4A-9D54-CD05EE7D5AB8}-SdWelcome-0]
+Result=1
+[{DB17D435-FC4A-4F4A-9D54-CD05EE7D5AB8}-SdStartCopy2-0]
+Result=1
+[Application]
+Name=
+Version=2.00.0000
+Company=SHARP
+Lang=0411
+[{DB17D435-FC4A-4F4A-9D54-CD05EE7D5AB8}-SdFinish-0]
+Result=1
+bOpt1=0
+bOpt2=0

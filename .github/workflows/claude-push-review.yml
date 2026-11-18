@@ -30,13 +30,19 @@ jobs:
 
       - name: Configure Codex for Azure OpenAI
         env:
-          AZURE_OPENAI_ENDPOINT: ${{ vars.AZURE_OPENAI_ENDPOINT }}
+          AZURE_OPENAI_ENDPOINT: ${{ secrets.AZURE_OPENAI_ENDPOINT || vars.AZURE_OPENAI_ENDPOINT }}
           AZURE_OPENAI_DEPLOYMENT: ${{ vars.AZURE_OPENAI_DEPLOYMENT || 'gpt-5.1-codex' }}
         run: |
           if [ -z "$AZURE_OPENAI_ENDPOINT" ]; then
             echo "::error::Repository variable AZURE_OPENAI_ENDPOINT is not set (e.g. https://my-resource.openai.azure.com)"
             exit 1
           fi
+          # Accept either the bare resource URL or the full URL Foundry shows
+          # (e.g. https://x.services.ai.azure.com/openai/v1/responses).
+          AZURE_OPENAI_ENDPOINT="${AZURE_OPENAI_ENDPOINT%/}"
+          AZURE_OPENAI_ENDPOINT="${AZURE_OPENAI_ENDPOINT%/responses}"
+          AZURE_OPENAI_ENDPOINT="${AZURE_OPENAI_ENDPOINT%/v1}"
+          AZURE_OPENAI_ENDPOINT="${AZURE_OPENAI_ENDPOINT%/openai}"
           mkdir -p ~/.codex
           cat > ~/.codex/config.toml <<EOF
           model = "${AZURE_OPENAI_DEPLOYMENT}"
@@ -44,7 +50,7 @@ jobs:
 
           [model_providers.azure]
           name = "Azure OpenAI"
-          base_url = "${AZURE_OPENAI_ENDPOINT%/}/openai/v1"
+          base_url = "${AZURE_OPENAI_ENDPOINT}/openai/v1"
           env_key = "AZURE_OPENAI_API_KEY"
           wire_api = "responses"
           EOF
@@ -74,8 +80,12 @@ jobs:
 
       - name: Run Codex Code Review
         env:
-          AZURE_OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY || secrets.OPENAI_API_KEY }}
         run: |
+          if [ -z "$AZURE_OPENAI_API_KEY" ]; then
+            echo "::error::Repository secret AZURE_OPENAI_API_KEY is not set (Azure portal > your OpenAI resource > Keys and Endpoint > KEY 1)"
+            exit 1
+          fi
           codex exec \
             --sandbox read-only \
             --output-last-message code_review_report.md \

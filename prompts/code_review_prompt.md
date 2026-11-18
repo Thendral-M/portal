@@ -4,7 +4,7 @@
 Act as a senior reviewer for the PC Portal application (Electron + Vue 3 frontend, local Express server, WiX Burn installer). Review only the changes in `changes.diff`, using the surrounding source files for context.
 
 ## How to review
-1. Read `changes.diff` to see which files and lines changed.
+1. Read `changes.diff` to see which files and lines changed..
 2. Open the changed files, and the code they call or are called by, so you judge the change in context rather than from the diff alone.
 3. Report problems introduced or exposed by this change. Do not report issues in untouched code unless the change makes them reachable or worse.
 4. Verify each finding against the actual code. Do not guess; if you are unsure, say so and explain what would confirm it.

@@ -27,31 +27,20 @@ Act as a senior reviewer for the PC Portal application (Electron + Vue 3 fronten
 - Do not include secret values in the report. If a secret is exposed, give only the file path and line.
 - Do not ask questions; complete the review in one pass.
 
-## Report format (Markdown)
+## Report format
 
-```
-# Code Review Report
+Your final answer must be a single JSON object matching the provided output schema. It is converted into an Excel workbook, so keep each field plain text (no Markdown tables).
 
-**Commit range:** <base>..<head>
-**Files changed:** <count>
+- `verdict`: `Approve` (no issues), `Approve with comments` (only Low/Medium issues), or `Changes requested` (any High/Critical issue).
+- `summary`: 2–4 sentences on what the change does and the overall assessment.
+- `files_reviewed`: repository-relative paths of the changed files you reviewed.
+- `findings`: one entry per issue, most severe first.
+  - `severity`: Critical / High / Medium / Low.
+  - `category`: Correctness / Security / Dependencies / Reliability / Maintainability.
+  - `title`: short one-line label.
+  - `file`: repository-relative path; `line`: line number in the new version of the file, or null if not applicable.
+  - `problem`: what is wrong. `impact`: what can happen, with a concrete scenario. `recommendation`: the specific fix.
+  - `confidence`: Confirmed (verified in code) / Likely / Uncertain.
+- `positive_notes`: anything done well, briefly; empty array if none.
 
-## Summary
-<2–4 sentences: what the change does and the overall verdict>
-
-## Findings
-
-| # | Severity | Category | File:Line | Issue |
-|---|----------|----------|-----------|-------|
-
-### 1. <Short title>
-- **Severity:** Critical / High / Medium / Low
-- **Location:** `path/to/file.js:42`
-- **Problem:** <what is wrong>
-- **Impact:** <what can happen, with a concrete scenario>
-- **Fix:** <specific recommendation, with a code snippet if helpful>
-
-## Positive notes
-<anything done well, briefly>
-```
-
-If there are no findings, say so clearly in the Summary and leave the Findings table empty.
+If there are no findings, return an empty `findings` array and say so in `summary`.

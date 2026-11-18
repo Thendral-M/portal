@@ -1,0 +1,45 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["verdict", "summary", "files_reviewed", "findings", "positive_notes"],
+  "properties": {
+    "verdict": {
+      "type": "string",
+      "enum": ["Approve", "Approve with comments", "Changes requested"]
+    },
+    "summary": { "type": "string" },
+    "files_reviewed": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "severity", "category", "title", "file", "line",
+          "problem", "impact", "recommendation", "confidence"
+        ],
+        "properties": {
+          "severity": { "type": "string", "enum": ["Critical", "High", "Medium", "Low"] },
+          "category": {
+            "type": "string",
+            "enum": ["Correctness", "Security", "Dependencies", "Reliability", "Maintainability"]
+          },
+          "title": { "type": "string" },
+          "file": { "type": "string" },
+          "line": { "type": ["integer", "null"] },
+          "problem": { "type": "string" },
+          "impact": { "type": "string" },
+          "recommendation": { "type": "string" },
+          "confidence": { "type": "string", "enum": ["Confirmed", "Likely", "Uncertain"] }
+        }
+      }
+    },
+    "positive_notes": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

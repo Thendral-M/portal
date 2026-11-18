@@ -1,5 +1,4 @@
-
-name: Claude Code Review on Push
+name: Codex Code Review on Push
 
 on:
   push:
@@ -12,7 +11,7 @@ permissions:
   contents: read
 
 jobs:
-  claude-review:
+  codex-review:
     runs-on: ubuntu-latest
 
     steps:
@@ -26,8 +25,13 @@ jobs:
         with:
           node-version: 22
 
-      - name: Install Claude Code
-        run: npm install -g @anthropic-ai/claude-code
+      - name: Install Codex CLI
+        run: npm install -g @openai/codex
+
+      - name: Authenticate Codex
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: printenv OPENAI_API_KEY | codex login --with-api-key
 
       - name: Generate Commit Diff
         env:
@@ -40,23 +44,28 @@ jobs:
             git diff "$BASE_SHA" "$HEAD_SHA" > changes.diff
           fi
 
-      - name: Run Claude Code Review
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      - name: Build Review Prompt
         run: |
-          claude -p \
-            "$(cat prompts/code_review_prompt.md)
+          {
+            cat prompts/code_review_prompt.md
+            echo
+            echo "Review the changes in changes.diff."
+            echo "Read the affected source files for context."
+            echo "Do not modify any source files."
+            echo "Generate a detailed Markdown review report."
+          } > review_prompt.md
 
-            Review the changes in changes.diff.
-            Read the affected source files for context.
-            Do not modify any source files.
-            Generate a detailed Markdown review report." \
-            --allowedTools "Read,Glob,Grep" \
-            > code_review_report.md
+      - name: Run Codex Code Review
+        run: |
+          codex exec \
+            --model gpt-5.1-codex \
+            --sandbox read-only \
+            --output-last-message code_review_report.md \
+            - < review_prompt.md
 
       - name: Upload Review Report
         uses: actions/upload-artifact@v4
         with:
-          name: Claude-Code-Review-Report
+          name: Codex-Code-Review-Report
           path: code_review_report.md
           if-no-files-found: error

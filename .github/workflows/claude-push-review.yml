@@ -28,10 +28,27 @@ jobs:
       - name: Install Codex CLI
         run: npm install -g @openai/codex
 
-      - name: Authenticate Codex
+      - name: Configure Codex for Azure OpenAI
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: printenv OPENAI_API_KEY | codex login --with-api-key
+          AZURE_OPENAI_ENDPOINT: ${{ vars.AZURE_OPENAI_ENDPOINT }}
+          AZURE_OPENAI_DEPLOYMENT: ${{ vars.AZURE_OPENAI_DEPLOYMENT || 'gpt-5.1-codex' }}
+        run: |
+          if [ -z "$AZURE_OPENAI_ENDPOINT" ]; then
+            echo "::error::Repository variable AZURE_OPENAI_ENDPOINT is not set (e.g. https://my-resource.openai.azure.com)"
+            exit 1
+          fi
+          mkdir -p ~/.codex
+          cat > ~/.codex/config.toml <<EOF
+          model = "${AZURE_OPENAI_DEPLOYMENT}"
+          model_provider = "azure"
+
+          [model_providers.azure]
+          name = "Azure OpenAI"
+          base_url = "${AZURE_OPENAI_ENDPOINT%/}/openai/v1"
+          env_key = "AZURE_OPENAI_API_KEY"
+          wire_api = "responses"
+          EOF
+          cat ~/.codex/config.toml
 
       - name: Generate Commit Diff
         env:
@@ -56,9 +73,10 @@ jobs:
           } > review_prompt.md
 
       - name: Run Codex Code Review
+        env:
+          AZURE_OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
           codex exec \
-            --model gpt-5.1-codex \
             --sandbox read-only \
             --output-last-message code_review_report.md \
             - < review_prompt.md

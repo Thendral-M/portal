@@ -1,0 +1,67 @@
+# AI code review on push (GitHub Actions).
+# All logic lives in ci/run_review.sh, which .gitlab-ci.yml also uses.
+#
+# Choose the reviewer with the repository variable REVIEW_PROVIDER:
+#   codex  -> secrets AZURE_OPENAI_API_KEY, AZURE_OPENAI_ENDPOINT (secret or variable),
+#             variable AZURE_OPENAI_DEPLOYMENT (optional, default gpt-5.1-codex)
+#   claude -> secret ANTHROPIC_API_KEY, variable CLAUDE_MODEL (optional, default sonnet)
+# Leave REVIEW_PROVIDER empty to pick automatically from whichever key is set.
+name: AI Code Review on Push
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - feature/**
+
+permissions:
+  contents: read
+
+jobs:
+  code-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python dependencies
+        run: pip install --quiet openpyxl
+
+      - name: Run AI Code Review
+        env:
+          REVIEW_PROVIDER: ${{ vars.REVIEW_PROVIDER }}
+          BASE_SHA: ${{ github.event.before }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+          # Codex (Azure OpenAI)
+          AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
+          AZURE_OPENAI_ENDPOINT: ${{ secrets.AZURE_OPENAI_ENDPOINT || vars.AZURE_OPENAI_ENDPOINT }}
+          AZURE_OPENAI_DEPLOYMENT: ${{ vars.AZURE_OPENAI_DEPLOYMENT }}
+          # Claude (Anthropic API)
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          CLAUDE_MODEL: ${{ vars.CLAUDE_MODEL }}
+          # Optional
+          FAIL_ON_CHANGES_REQUESTED: ${{ vars.FAIL_ON_CHANGES_REQUESTED }}
+        run: bash ci/run_review.sh
+
+      - name: Upload Review Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: AI-Code-Review-${{ github.sha }}
+          path: review-output/
+          if-no-files-found: warn

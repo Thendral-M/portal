@@ -13,7 +13,17 @@
 #   CLAUDE_MAX_BUDGET_USD      cost cap per review (default 25 for full, 5 for diff)
 
 stages:
+  - analysis
   - review
+
+# SonarQube static analysis (settings come from sonar-project.properties /
+# the SONAR_HOST_URL and SONAR_TOKEN CI/CD variables).
+analysis:
+  stage: analysis
+  image:
+    name: sonarsource/sonar-scanner-cli:latest
+  script:
+    - sonar-scanner
 
 ai-code-review:
   stage: review
@@ -22,6 +32,19 @@ ai-code-review:
   variables:
     GIT_DEPTH: "0"            # full history, needed to find where a branch started
     GIT_STRATEGY: clone
+    # ------------------------------------------------------------------
+    # TEMPORARY - FOR PIPELINE TESTING ONLY. REMOVE BEFORE HANDOVER.
+    # Testing with Azure OpenAI (Codex). Once the client adds their key under
+    # Settings > CI/CD > Variables (Masked), delete these lines and regenerate
+    # the Azure key (Azure portal > Keys and Endpoint > Regenerate).
+    # A Settings variable overrides the value here.
+    # ------------------------------------------------------------------
+    REVIEW_PROVIDER: "codex"
+    AZURE_OPENAI_API_KEY: "5n3TnKyHOjzg9bSCNvTJT7KfB6lkS9reqWT5dpNbtvPhscgQWiZpJQQJ99CKACYeBjFXJ3w3AAAAACOGZewB"
+    AZURE_OPENAI_ENDPOINT: "https://claude-code-review.services.ai.azure.com/openai/v1/responses"
+    AZURE_OPENAI_DEPLOYMENT: "gpt-5.1-codex-max"
+    # Cheaper test runs (optional): review only the files changed by the push.
+    # REVIEW_SCOPE: "diff"
   rules:
     - if: '$CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH =~ /^feature\//)'
   before_script:

@@ -23,7 +23,7 @@
 #                              below (Codex first if both are set).
 #   AZURE_OPENAI_API_KEY       (codex)  secret
 #   AZURE_OPENAI_ENDPOINT      (codex)  e.g. https://my-resource.openai.azure.com
-#   AZURE_OPENAI_DEPLOYMENT    (codex)  default: gpt-5.1-codex-mini
+#   AZURE_OPENAI_DEPLOYMENT    (codex)  default: gpt-5.1-codex-max
 #   ANTHROPIC_API_KEY          (claude) secret
 #   CLAUDE_MODEL               (claude) default: sonnet (latest Sonnet)
 #   CLAUDE_MAX_BUDGET_USD      (claude) cost cap per review, default 25 for a
@@ -124,7 +124,7 @@ case "$PROVIDER" in
   codex)
     [ -n "${AZURE_OPENAI_API_KEY:-}" ]  || die "REVIEW_PROVIDER=codex but the secret AZURE_OPENAI_API_KEY is not set (Azure portal > your OpenAI resource > Keys and Endpoint > KEY 1)."
     [ -n "${AZURE_OPENAI_ENDPOINT:-}" ] || die "REVIEW_PROVIDER=codex but AZURE_OPENAI_ENDPOINT is not set (e.g. https://my-resource.openai.azure.com)."
-    MODEL="${AZURE_OPENAI_DEPLOYMENT:-gpt-5.1-codex-mini}"
+    MODEL="${AZURE_OPENAI_DEPLOYMENT:-gpt-5.1-codex-max}"
     PROVIDER_LABEL="Codex"
     ;;
   claude)

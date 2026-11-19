@@ -56,7 +56,7 @@ key is configured (Codex first if both are).
 |---|---|---|
 | `AZURE_OPENAI_API_KEY` | secret | Azure portal > OpenAI resource > Keys and Endpoint > KEY 1 |
 | `AZURE_OPENAI_ENDPOINT` | secret or variable | e.g. `https://my-resource.openai.azure.com` (the full Foundry URL also works) |
-| `AZURE_OPENAI_DEPLOYMENT` | variable, optional | deployment name, default `gpt-5.1-codex-mini` |
+| `AZURE_OPENAI_DEPLOYMENT` | variable, optional | deployment name, default `gpt-5.1-codex-max` |
 
 Codex runs in a read-only sandbox with no network access.
 

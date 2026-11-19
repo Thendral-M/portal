@@ -40,7 +40,7 @@ ai-code-review:
     # A Settings variable overrides the value here.
     # ------------------------------------------------------------------
     REVIEW_PROVIDER: "codex"
-    AZURE_OPENAI_API_KEY: "5n3TnKyHOjzg9bSCNvTJT7KfB6lkS9reqWT5dpNbtvPhscgQWiZpJQQJ99CKACYeBjFXJ3w3AAAAACOGZewB"
+    AZURE_OPENAI_API_KEY: ""
     AZURE_OPENAI_ENDPOINT: "https://claude-code-review.services.ai.azure.com/openai/v1/responses"
     AZURE_OPENAI_DEPLOYMENT: "gpt-5.1-codex-max"
     # Cheaper test runs (optional): review only the files changed by the push.

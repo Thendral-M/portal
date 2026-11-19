@@ -3,7 +3,7 @@
 #
 # Choose the reviewer with the repository variable REVIEW_PROVIDER:
 #   codex  -> secrets AZURE_OPENAI_API_KEY, AZURE_OPENAI_ENDPOINT (secret or variable),
-#             variable AZURE_OPENAI_DEPLOYMENT (optional, default gpt-5.1-codex)
+#             variable AZURE_OPENAI_DEPLOYMENT (optional, default gpt-5.1-codex-max)
 #   claude -> secret ANTHROPIC_API_KEY, variable CLAUDE_MODEL (optional, default sonnet)
 # Leave REVIEW_PROVIDER empty to pick automatically from whichever key is set.
 #

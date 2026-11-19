@@ -8,8 +8,9 @@
 # Leave REVIEW_PROVIDER empty to pick automatically from whichever key is set.
 #
 # Scope (repository variable REVIEW_SCOPE):
-#   full (default) -> whole code base, prompts/entire-application-review.md
-#   diff           -> only the pushed commits, prompts/code_review_prompt.md
+#   full (default) -> whole code base
+#   diff           -> only the files changed by the push
+# Both use prompts/entire-application-review.md.
 # REVIEW_WEB_RESEARCH=true lets Claude use WebSearch/WebFetch for CVE research.
 name: AI Code Review on Push
 

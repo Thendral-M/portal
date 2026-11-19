@@ -7,8 +7,8 @@
 #   codex : AZURE_OPENAI_API_KEY, AZURE_OPENAI_ENDPOINT, AZURE_OPENAI_DEPLOYMENT (optional)
 #   claude: ANTHROPIC_API_KEY, CLAUDE_MODEL (optional, default sonnet)
 #   FAIL_ON_CHANGES_REQUESTED  true to fail the job on "Changes requested" (optional)
-#   REVIEW_SCOPE               full (default: whole code base, prompts/entire-application-review.md)
-#                              | diff (only the pushed commits, prompts/code_review_prompt.md)
+#   REVIEW_SCOPE               full (default: whole code base) | diff (only the files changed by the push);
+#                              both use prompts/entire-application-review.md
 #   REVIEW_WEB_RESEARCH        true lets Claude use WebSearch/WebFetch for CVE research (optional)
 #   CLAUDE_MAX_BUDGET_USD      cost cap per review (default 25 for full, 5 for diff)
 

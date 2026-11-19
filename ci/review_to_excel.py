@@ -35,7 +35,7 @@ def full_scope():
 
 
 def finding_id(i):
-    return f"INST-{i:03d}" if full_scope() else i
+    return f"INST-{i:03d}"
 
 
 def reviewed_range():

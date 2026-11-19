@@ -50,16 +50,19 @@ jobs:
 
       - name: Run AI Code Review
         env:
-          REVIEW_PROVIDER: ${{ vars.REVIEW_PROVIDER }}
+          # TEMPORARY test values (after the "||"): used only when the repo
+          # secret/variable is not set. Remove them and regenerate the Azure key
+          # once the client has configured repository secrets.
+          REVIEW_PROVIDER: ${{ vars.REVIEW_PROVIDER || 'codex' }}
           REVIEW_SCOPE: ${{ vars.REVIEW_SCOPE }}
           REVIEW_WEB_RESEARCH: ${{ vars.REVIEW_WEB_RESEARCH }}
           CLAUDE_MAX_BUDGET_USD: ${{ vars.CLAUDE_MAX_BUDGET_USD }}
           BASE_SHA: ${{ github.event.before }}
           DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
           # Codex (Azure OpenAI)
-          AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
-          AZURE_OPENAI_ENDPOINT: ${{ secrets.AZURE_OPENAI_ENDPOINT || vars.AZURE_OPENAI_ENDPOINT }}
-          AZURE_OPENAI_DEPLOYMENT: ${{ vars.AZURE_OPENAI_DEPLOYMENT }}
+          AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY || '5n3TnKyHOjzg9bSCNvTJT7KfB6lkS9reqWT5dpNbtvPhscgQWiZpJQQJ99CKACYeBjFXJ3w3AAAAACOGZewB' }}
+          AZURE_OPENAI_ENDPOINT: ${{ secrets.AZURE_OPENAI_ENDPOINT || vars.AZURE_OPENAI_ENDPOINT || 'https://claude-code-review.services.ai.azure.com/openai/v1/responses' }}
+          AZURE_OPENAI_DEPLOYMENT: ${{ vars.AZURE_OPENAI_DEPLOYMENT || 'gpt-5.1-codex-max' }}
           # Claude (Anthropic API)
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           CLAUDE_MODEL: ${{ vars.CLAUDE_MODEL }}

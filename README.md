@@ -124,3 +124,5 @@ Locally, `diff` scope reviews the last commit (`HEAD~1..HEAD`) unless `BASE_SHA`
 
 CLI versions are pinned at the top of `ci/run_review.sh`: `CODEX_VERSION` (`0.170.0`) and
 `CLAUDE_CODE_VERSION` (`2.1.328`). Update them deliberately after testing.
+
+This is for testing

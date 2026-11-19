@@ -20,6 +20,8 @@ on:
       - main
       - develop
       - feature/**
+  # Adds a "Run workflow" button (Actions tab) to start a review without pushing.
+  workflow_dispatch:
 
 permissions:
   contents: read

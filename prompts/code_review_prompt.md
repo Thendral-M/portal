@@ -41,6 +41,7 @@ Your final answer must be a single JSON object matching the provided output sche
   - `file`: repository-relative path; `line`: line number in the new version of the file, or null if not applicable.
   - `problem`: what is wrong. `impact`: what can happen, with a concrete scenario. `recommendation`: the specific fix.
   - `confidence`: Confirmed (verified in code) / Likely / Uncertain.
+  - `reference`: CWE / CVE / authoritative URL, or null. `validation_steps`: how to confirm the fix, or null.
 - `positive_notes`: anything done well, briefly; empty array if none.
 
 If there are no findings, return an empty `findings` array and say so in `summary`.

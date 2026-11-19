@@ -19,7 +19,8 @@
         "additionalProperties": false,
         "required": [
           "severity", "category", "title", "file", "line",
-          "problem", "impact", "recommendation", "confidence"
+          "problem", "impact", "recommendation", "confidence",
+          "reference", "validation_steps"
         ],
         "properties": {
           "severity": { "type": "string", "enum": ["Critical", "High", "Medium", "Low"] },
@@ -33,7 +34,9 @@
           "problem": { "type": "string" },
           "impact": { "type": "string" },
           "recommendation": { "type": "string" },
-          "confidence": { "type": "string", "enum": ["Confirmed", "Likely", "Uncertain"] }
+          "confidence": { "type": "string", "enum": ["Confirmed", "Likely", "Uncertain"] },
+          "reference": { "type": ["string", "null"] },
+          "validation_steps": { "type": ["string", "null"] }
         }
       }
     },

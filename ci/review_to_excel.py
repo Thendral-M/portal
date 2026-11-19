@@ -20,12 +20,29 @@ from openpyxl.utils import get_column_letter
 SEVERITIES = ["Critical", "High", "Medium", "Low"]
 SEVERITY_FILL = {
     "Critical": "C00000",
-    "High": "FF6B6B",
-    "Medium": "FFD966",
-    "Low": "A9D08E",
+    "High": "E26B0A",
+    "Medium": "FFC000",
+    "Low": "4472C4",
 }
+WHITE_TEXT = {"Critical", "High", "Low"}
 FINDING_FIELDS = ["severity", "category", "title", "file", "line",
-                  "problem", "impact", "recommendation", "confidence"]
+                  "problem", "impact", "recommendation", "confidence",
+                  "reference", "validation_steps"]
+
+
+def full_scope():
+    return env("REVIEW_SCOPE") == "full"
+
+
+def finding_id(i):
+    return f"INST-{i:03d}" if full_scope() else i
+
+
+def reviewed_range():
+    head = env("REVIEW_HEAD_SHA")[:7]
+    if full_scope():
+        return f"Entire code base at {head}"
+    return f'{env("REVIEW_BASE_SHA")[:7] or "(root)"}..{head}'
 HEADER_FILL = PatternFill("solid", fgColor="1F4E78")
 HEADER_FONT = Font(bold=True, color="FFFFFF")
 WRAP = Alignment(wrap_text=True, vertical="top")
@@ -101,7 +118,8 @@ def build_workbook(review, out_path):
     rows = [
         ("Repository", env("REVIEW_REPO")),
         ("Branch", env("REVIEW_BRANCH")),
-        ("Commit range", f'{env("REVIEW_BASE_SHA")[:7] or "(root)"}..{env("REVIEW_HEAD_SHA")[:7]}'),
+        ("Review scope", "Entire application and installer" if full_scope() else "Commits in this push"),
+        ("Reviewed", reviewed_range()),
         ("Pushed by", env("REVIEW_ACTOR")),
         ("CI platform", env("REVIEW_PLATFORM")),
         ("Reviewed at (UTC)", datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M")),
@@ -115,7 +133,7 @@ def build_workbook(review, out_path):
     rows += [
         ("Summary", review["summary"]),
         ("Files reviewed", "\n".join(review["files_reviewed"])),
-        ("Positive notes", "\n".join(f"- {n}" for n in review["positive_notes"])),
+        ("Clean checks / positive notes", "\n".join(f"- {n}" for n in review["positive_notes"])),
     ]
     note = env("REVIEW_NOTE")
     if note:
@@ -133,18 +151,19 @@ def build_workbook(review, out_path):
 
     # --- Findings sheet ---
     wf = wb.create_sheet("Findings")
-    headers = ["#", "Severity", "Category", "Title", "File", "Line",
-               "Problem", "Impact", "Recommendation", "Confidence"]
-    widths = [5, 11, 15, 35, 40, 7, 60, 50, 60, 12]
+    headers = ["Finding ID", "Severity", "Category", "Title", "File", "Line",
+               "Description / Root cause", "Impact", "Recommended remediation",
+               "Confidence", "CWE / CVE / Reference", "Validation steps"]
+    widths = [11, 11, 15, 35, 40, 7, 60, 50, 60, 12, 45, 50]
     wf.append(headers)
     style_header(wf)
     for i, f in enumerate(findings, 1):
-        wf.append([i] + [f[k] for k in FINDING_FIELDS])
+        wf.append([finding_id(i)] + [f[k] for k in FINDING_FIELDS])
         sev_cell = wf.cell(row=i + 1, column=2)
         color = SEVERITY_FILL.get(f["severity"])
         if color:
             sev_cell.fill = PatternFill("solid", fgColor=color)
-            sev_cell.font = Font(bold=True, color="FFFFFF" if f["severity"] == "Critical" else "000000")
+            sev_cell.font = Font(bold=True, color="FFFFFF" if f["severity"] in WHITE_TEXT else "000000")
     for row in wf.iter_rows(min_row=2):
         for c in row:
             c.alignment = WRAP
@@ -154,7 +173,7 @@ def build_workbook(review, out_path):
     if findings:
         wf.auto_filter.ref = wf.dimensions
     else:
-        wf.append(["", "", "", "No findings - the reviewer found no issues in this change."])
+        wf.append(["", "", "", "No findings - the reviewer found no issues."])
 
     wb.save(out_path)
     return findings, counts
@@ -166,7 +185,7 @@ def build_summary(review, findings, counts, xlsx_name):
         f"## {reviewer} Code Review",
         "",
         f"**Verdict:** {review['verdict']}  ",
-        f"**Commit range:** `{env('REVIEW_BASE_SHA')[:7] or '(root)'}..{env('REVIEW_HEAD_SHA')[:7]}`  ",
+        f"**Reviewed:** `{reviewed_range()}`  ",
         f"**Model:** {env('REVIEW_MODEL')}  ",
         f"**Findings:** {len(findings)} "
         + "(" + ", ".join(f"{s}: {counts.get(s, 0)}" for s in SEVERITIES) + ")",
@@ -177,11 +196,11 @@ def build_summary(review, findings, counts, xlsx_name):
     if env("REVIEW_NOTE"):
         lines += [f"> {env('REVIEW_NOTE')}", ""]
     if findings:
-        lines += ["| # | Severity | Category | Location | Title |", "|---|---|---|---|---|"]
+        lines += ["| ID | Severity | Category | Location | Title |", "|---|---|---|---|---|"]
         for i, f in enumerate(findings, 1):
             loc = f["file"] + (f":{f['line']}" if f["line"] else "")
             title = f["title"].replace("|", "\\|").replace("\n", " ")
-            lines.append(f"| {i} | {f['severity']} | {f['category']} | `{loc}` | {title} |")
+            lines.append(f"| {finding_id(i)} | {f['severity']} | {f['category']} | `{loc}` | {title} |")
         lines.append("")
     lines.append(f"Download **{xlsx_name}** from the job's artifacts.")
     return "\n".join(lines) + "\n"

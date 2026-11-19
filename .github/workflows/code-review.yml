@@ -6,6 +6,11 @@
 #             variable AZURE_OPENAI_DEPLOYMENT (optional, default gpt-5.1-codex)
 #   claude -> secret ANTHROPIC_API_KEY, variable CLAUDE_MODEL (optional, default sonnet)
 # Leave REVIEW_PROVIDER empty to pick automatically from whichever key is set.
+#
+# Scope (repository variable REVIEW_SCOPE):
+#   full (default) -> whole code base, prompts/entire-application-review.md
+#   diff           -> only the pushed commits, prompts/code_review_prompt.md
+# REVIEW_WEB_RESEARCH=true lets Claude use WebSearch/WebFetch for CVE research.
 name: AI Code Review on Push
 
 on:
@@ -21,7 +26,7 @@ permissions:
 jobs:
   code-review:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 90
 
     steps:
       - name: Checkout Repository
@@ -45,6 +50,9 @@ jobs:
       - name: Run AI Code Review
         env:
           REVIEW_PROVIDER: ${{ vars.REVIEW_PROVIDER }}
+          REVIEW_SCOPE: ${{ vars.REVIEW_SCOPE }}
+          REVIEW_WEB_RESEARCH: ${{ vars.REVIEW_WEB_RESEARCH }}
+          CLAUDE_MAX_BUDGET_USD: ${{ vars.CLAUDE_MAX_BUDGET_USD }}
           BASE_SHA: ${{ github.event.before }}
           DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
           # Codex (Azure OpenAI)
